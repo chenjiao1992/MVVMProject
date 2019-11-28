@@ -1,2 +1,2 @@
-include ':app', ':architecture'
+include ':app', ':architecture', ':library'
 rootProject.name='MVVMProject'

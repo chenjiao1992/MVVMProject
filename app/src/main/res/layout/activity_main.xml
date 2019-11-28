@@ -2,38 +2,70 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
+    <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
+    <com.cj.library.widget.ChatBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cbv_pinDirection="left"
+        app:cbv_cornerRadius="8dp"
+        app:cbv_pinWidth="20dp"
+        app:cbv_pinHeight="20dp"
+        app:cbv_pinMargin="50dp"
+        app:cbv_pinTipMargin="0dp"
+        app:cbv_pinTipRoundRadius="5dp"
+        app:cbv_borderColor="@android:color/black"
+        app:cbv_borderWidth="1dp">
 
-        <com.sothree.slidinguppanel.SlidingUpPanelLayout
-            android:id="@+id/slidingLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:maxWidth="210dp"
+            android:background="#FF627D"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="12dp"
+            android:text="婚礼仪式部分结束，狂欢部分正式开始！抢红包、送礼物、闹洞房，燥起来吧！"
+            />
+    </com.cj.library.widget.ChatBubbleView>
+    </LinearLayout>
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        android:id="@+id/drawerLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:context=".MainActivity">-->
 
-            <fragment
-                android:id="@+id/main_fragment_host"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph=""/>
+<!--        <com.sothree.slidinguppanel.SlidingUpPanelLayout-->
+<!--            android:id="@+id/slidingLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
-            <fragment
-                android:id="@+id/slide_fragment_host"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+<!--            <fragment-->
+<!--                android:id="@+id/main_fragment_host"-->
+<!--                android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:defaultNavHost="true"-->
+<!--                />-->
 
-        <fragment
-            android:id="@+id/drawer_fragment_host"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.drawerlayout.widget.DrawerLayout>
+<!--            <fragment-->
+<!--                android:id="@+id/slide_fragment_host"-->
+<!--                android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent" />-->
+<!--        </com.sothree.slidinguppanel.SlidingUpPanelLayout>-->
+
+<!--        <fragment-->
+<!--            android:id="@+id/drawer_fragment_host"-->
+<!--            android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
 
 </layout>

@@ -9,7 +9,7 @@
     <com.cj.library.widget.ChatBubbleView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cbv_pinDirection="left"
+        app:cbv_pinDirection="top"
         app:cbv_cornerRadius="8dp"
         app:cbv_pinWidth="20dp"
         app:cbv_pinHeight="20dp"

@@ -215,32 +215,32 @@ class ChatBubbleView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
                     //绘制箭头下半部分
                     clipPath.lineTo(pinTipX + pinHeight, top + pinWidth) //从c到d的直线
                 } else {
-//                    val pinTipRoundRadiusRect = mPinTipRoundRadiusRect
-//                    val pinTipCenterXR = left + pinWidth - pinTipRoundRadius
-//                    //计算箭头上半部分坐标
-//                    val pinTipCenterTopYR = pinTipMarinRange + pinTipMargin
-//                    val pinTipTopDistance = Math.sqrt(
-//                            (pinTipCenterXR * pinTipCenterXR + pinTipCenterTopYR * pinTipCenterTopYR - pinTipRoundRadius * pinTipRoundRadius).toDouble())
-//                    val pinTipTopRadian = Math.PI / 2.0 - Math.atan((pinTipCenterXR / pinTipCenterTopYR).toDouble()) - Math.atan(
-//                            pinTipRoundRadius / pinTipTopDistance)
-//                    val pinTipTopRadianR = Math.PI / 2.0 - pinTipTopRadian
-//                    val pinTipTopXR = (Math.cos(pinTipTopRadian) * pinTipTopDistance).toFloat()
-//                    val pinTipTopYR = (Math.sin(pinTipTopRadian) * pinTipTopDistance).toFloat()
-//                    //绘制箭头上半部分
-//                    clipPath.lineTo(left + pinWidth - pinTipTopXR + left, pinTipX + pinTipTopYR)
-//                    //计算箭头下半部分坐标
-//                    val pinTipCenterBottomYR = pinTipMarinRange - pinTipMargin
-//                    val pinTipBottomDistance = Math.sqrt(
-//                            (pinTipCenterXR * pinTipCenterXR + pinTipCenterBottomYR * pinTipCenterBottomYR - pinTipRoundRadius * pinTipRoundRadius).toDouble())
-//                    val pinTipBottomRadianR = Math.PI / 2.0 - (Math.PI / 2.0 - Math.atan((pinTipCenterXR / pinTipCenterBottomYR).toDouble()) - Math.atan(
-//                            pinTipRoundRadius / pinTipBottomDistance))
-//                    //绘制箭头圆角
-//                    pinTipRoundRadiusRect.set(left, pinTipX + pinTipMargin - pinTipRoundRadius + pinHeight / 2F, pinTipRoundRadius * 2F,
-//                            pinTipX + pinTipMargin + pinTipRoundRadius + pinHeight / 2F)
-//                    clipPath.arcTo(pinTipRoundRadiusRect, Math.toDegrees(pinTipTopRadianR).toFloat() - 180F,
-//                            Math.toDegrees(-pinTipTopRadianR - pinTipBottomRadianR).toFloat(), false)
-//                    //绘制箭头下半部分
-//                    clipPath.lineTo(left + pinWidth, pinTipX + pinHeight)
+                    val pinTipRoundRadiusRect = mPinTipRoundRadiusRect
+                    val pinTipCenterXR = pinTipMarinRange + pinTipMargin
+                    //计算箭头上半部分坐标
+                    val pinTipCenterTopYR =  top + pinWidth - pinTipRoundRadius
+                    val pinTipTopDistance = Math.sqrt(
+                            (pinTipCenterXR * pinTipCenterXR + pinTipCenterTopYR * pinTipCenterTopYR - pinTipRoundRadius * pinTipRoundRadius).toDouble())
+                    val pinTipTopRadian = Math.PI / 2.0 - Math.atan((pinTipCenterTopYR / pinTipCenterXR).toDouble()) - Math.atan(
+                            pinTipRoundRadius / pinTipTopDistance)
+                    val pinTipTopRadianR = Math.PI / 2.0 - pinTipTopRadian
+                    val pinTipTopXR = (Math.sin(pinTipTopRadian) * pinTipTopDistance).toFloat()
+                    val pinTipTopYR = (Math.cos(pinTipTopRadian) * pinTipTopDistance).toFloat()
+                    //绘制箭头上半部分
+                    clipPath.lineTo(pinTipX + pinTipTopXR, top + pinWidth - pinTipTopYR + top)
+                    //计算箭头下半部分坐标
+                    val pinTipCenterTopXR = pinTipMarinRange - pinTipMargin
+                    val pinTipBottomDistance = Math.sqrt(
+                            (pinTipCenterXR * pinTipCenterXR + pinTipCenterTopXR * pinTipCenterTopXR - pinTipRoundRadius * pinTipRoundRadius).toDouble())
+                    val pinTipBottomRadianR = Math.PI / 2.0 - (Math.PI / 2.0 - Math.atan((pinTipCenterTopYR / pinTipCenterTopXR).toDouble()) - Math.atan(
+                            pinTipRoundRadius / pinTipBottomDistance))
+                    //绘制箭头圆角
+                    pinTipRoundRadiusRect.set(pinTipX + pinTipMargin - pinTipRoundRadius + pinHeight / 2F, top, pinTipX + pinTipMargin + pinTipRoundRadius + pinHeight / 2F,
+                            pinTipRoundRadius * 2F)
+                    clipPath.arcTo(pinTipRoundRadiusRect,  Math.toDegrees(pinTipTopRadianR-180F).toFloat(),
+                            Math.toDegrees(-pinTipTopRadianR - pinTipBottomRadianR).toFloat(), false)
+                    //绘制箭头下半部分
+                    clipPath.lineTo(pinTipX + pinHeight, top + pinWidth) //从c到d的直线
                 }
                 //向下绘制至左下角圆角处
                 clipPath.lineTo(right - cornerRadiusRightTop, top + pinWidth) //画从d到e的直线

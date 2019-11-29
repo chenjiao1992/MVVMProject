@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+static def releaseTime() {
+    return new Date().format("yyyyMMdd")
+}
 
 android {
     signingConfigs {
@@ -26,6 +29,16 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (outputFileName.endsWith('.apk')) {
+                outputFileName = outputFileName.replace(".apk", "_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime()}.apk")
+            }
+        }
+    }
+
+
     dataBinding {
         enabled = true
     }

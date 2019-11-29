@@ -1,20 +1,29 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('F:\\MVVMProject\\app\\shike.keystore')
+            storePassword 'xifan520'
+            keyAlias = 'xifan'
+            keyPassword 'xifan520'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.cj.mvvmproject"
         minSdkVersion 24
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     dataBinding {

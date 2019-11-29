@@ -9,13 +9,13 @@
     <com.cj.library.widget.ChatBubbleView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cbv_pinDirection="top"
+        app:cbv_pinDirection="bottom"
         app:cbv_cornerRadius="8dp"
         app:cbv_pinWidth="20dp"
         app:cbv_pinHeight="20dp"
         app:cbv_pinMargin="50dp"
         app:cbv_pinTipMargin="0dp"
-        app:cbv_pinTipRoundRadius="5dp"
+        app:cbv_pinTipRoundRadius="8dp"
         app:cbv_borderColor="@android:color/black"
         app:cbv_borderWidth="1dp">
 

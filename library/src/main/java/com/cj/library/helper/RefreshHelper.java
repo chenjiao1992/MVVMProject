@@ -2,7 +2,7 @@ package com.cj.library.helper;
 
 /**
  Create by chenjiao at 2019/11/27 0027
- 描述：
+ 描述：记录生命周期相关的变量
  */
 public class RefreshHelper {
     private long mRefreshThreshold = 0L;
@@ -11,7 +11,7 @@ public class RefreshHelper {
     private long mPauseTime = 0L;
 
 
-    void setRefreshThreshold(long refreshThreshold) {
+    public void setRefreshThreshold(long refreshThreshold) {
         if (refreshThreshold >= 0L) {
             mRefreshThreshold = refreshThreshold;
         } else {
@@ -19,7 +19,7 @@ public class RefreshHelper {
         }
     }
 
-    void pause() {
+    public void pause() {
         mResume = false;
         if (mRefreshThreshold >= 0L) {
             mPauseTime = System.currentTimeMillis();
@@ -27,18 +27,18 @@ public class RefreshHelper {
 
     }
 
-    void resume() {
+    public void resume() {
         mResume = true;
     }
 
     boolean isResume = mResume;
 
-    void destory() {
+    public void destory() {
         mResume = false;
         mFirstEnter = true;
     }
 
-    boolean firstEnter() {
+    public boolean firstEnter() {
         if (mFirstEnter) {
             mFirstEnter = false;
             return true;
@@ -46,7 +46,7 @@ public class RefreshHelper {
         return false;
     }
 
-    boolean shouldRefresh() {
+    public boolean shouldRefresh() {
         if (mRefreshThreshold >= 0L) {
             return System.currentTimeMillis() - mPauseTime > mRefreshThreshold;
         }

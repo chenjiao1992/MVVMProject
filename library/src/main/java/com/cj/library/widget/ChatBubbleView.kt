@@ -216,15 +216,9 @@ class ChatBubbleView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
                     clipPath.lineTo(pinTipX + pinHeight, top + pinWidth) //从c到d的直线
                 } else {
                     //绘制箭头上半部分
-//                    clipPath.lineTo(pinTipX + +pinTipMarinRange + pinTipMargin - pinTipRoundRadius, bottom - pinTipRoundRadius)
-//                    clipPath.quadTo(pinTipX + +pinTipMarinRange + pinTipMargin, bottom + pinTipRoundRadius,
-//                            pinTipX + +pinTipMarinRange + pinTipMargin + pinTipRoundRadius, bottom - pinTipRoundRadius) //画e到g的贝塞尔曲线
-//                    //绘制箭头下半部分
-//                    clipPath.lineTo(pinTipX + pinHeight, bottom - pinWidth) //从c到d的直线
-                    //绘制箭头上半部分
-                    clipPath.lineTo(pinTipX + +pinTipMarinRange + pinTipMargin - pinTipRoundRadius, top  + pinTipRoundRadius)
-                    clipPath.quadTo(pinTipX + +pinTipMarinRange + pinTipMargin, top-pinTipRoundRadius,
-                            pinTipX + +pinTipMarinRange + pinTipMargin + pinTipRoundRadius, top+pinTipRoundRadius) //画e到g的贝塞尔曲线
+                    clipPath.lineTo(pinTipX + +pinTipMarinRange + pinTipMargin - pinTipRoundRadius, top + pinTipRoundRadius)
+                    clipPath.quadTo(pinTipX + +pinTipMarinRange + pinTipMargin, top - pinTipRoundRadius,
+                            pinTipX + +pinTipMarinRange + pinTipMargin + pinTipRoundRadius, top + pinTipRoundRadius) //画e到g的贝塞尔曲线
                     //绘制箭头下半部分
                     clipPath.lineTo(pinTipX + pinHeight, top + pinWidth) //从c到d的直线
                 }

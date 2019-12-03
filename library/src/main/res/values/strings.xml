@@ -1,26 +1,47 @@
 <resources>
     <string name="app_name">Library</string>
     <declare-styleable name="ChatBubbleView">
-        <attr name="cbv_cornerRadiusLeftTop" format="dimension"/>
-        <attr name="cbv_cornerRadiusLeftBottom" format="dimension"/>
-        <attr name="cbv_cornerRadiusRightTop" format="dimension"/>
-        <attr name="cbv_cornerRadiusRightBottom" format="dimension"/>
-        <attr name="cbv_cornerRadius" format="dimension"/>
-        <attr name="cbv_borderColor" format="color"/>
-        <attr name="cbv_borderWidth" format="dimension"/>
+        <attr name="cbv_cornerRadiusLeftTop"
+            format="dimension" />
+        <attr name="cbv_cornerRadiusLeftBottom"
+            format="dimension" />
+        <attr name="cbv_cornerRadiusRightTop"
+            format="dimension" />
+        <attr name="cbv_cornerRadiusRightBottom"
+            format="dimension" />
+        <attr name="cbv_cornerRadius"
+            format="dimension" />
+        <attr name="cbv_borderColor"
+            format="color" />
+        <attr name="cbv_borderWidth"
+            format="dimension" />
         <attr name="cbv_pinDirection">
-            <enum name="left" value="0"/>
-            <enum name="top" value="1"/>
-            <enum name="right" value="2"/>
-            <enum name="bottom" value="3"/>
+            <enum name="left"
+                value="0" />
+            <enum name="top"
+                value="1" />
+            <enum name="right"
+                value="2" />
+            <enum name="bottom"
+                value="3" />
         </attr>
-        <attr name="cbv_pinWidth" format="dimension"/>
-        <attr name="cbv_pinHeight" format="dimension"/>
-        <attr name="cbv_pinMargin" format="dimension"/>
-        <attr name="cbv_pinTipMargin" format="dimension"/>
-        <attr name="cbv_pinTipRoundRadius" format="dimension"/>
-        <attr name="cbv_shadowColor" format="color"/>
-        <attr name="cbv_shadowDx" format="dimension"/>
-        <attr name="cbv_shadowDy" format="dimension"/>
+        <attr name="cbv_pinWidth"
+            format="dimension" />
+        <attr name="cbv_pinHeight"
+            format="dimension" />
+        <attr name="cbv_pinMargin"
+            format="dimension" />
+        <attr name="cbv_pinTipMargin"
+            format="dimension" />
+        <attr name="cbv_pinTipRoundRadius"
+            format="dimension" />
+        <attr name="cbv_shadowColor"
+            format="color" />
+        <attr name="cbv_shadowDx"
+            format="dimension" />
+        <attr name="cbv_shadowDy"
+            format="dimension" />
     </declare-styleable>
+    <item name="toolbar"
+        type="id" />
 </resources>

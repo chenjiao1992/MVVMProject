@@ -37,27 +37,27 @@ public class ActivityDataHelper {
 
     }
 
-    void observeData(LifecycleOwner owner, String key, Observer<Object> observer) {
+    public void observeData(LifecycleOwner owner, String key, Observer<Object> observer) {
         ActivityDataViewModel viewModel = getViewModel(owner);
         viewModel.dataStore.observeKey(owner, key, observer);
     }
 
-    void observeData(LifecycleOwner owner, DataObserver observer) {
+    public void observeData(LifecycleOwner owner, DataObserver observer) {
         ActivityDataViewModel viewModel = getViewModel(owner);
         viewModel.dataStore.observeKey(owner, observer);
     }
 
-    void changeData(LifecycleOwner owner, String key, Object value) {
+    public void changeData(LifecycleOwner owner, String key, Object value) {
         ActivityDataViewModel viewModel = getViewModel(owner);
         viewModel.dataStore.putOrRemove(key, value);
     }
 
-    Object queryData(LifecycleOwner owner, String key) {
+    public Object queryData(LifecycleOwner owner, String key) {
         ActivityDataViewModel viewModel = getViewModel(owner);
         return viewModel.dataStore.get(key);
     }
 
-    void observeCommand(LifecycleOwner owner, final String key, final Observer<Object> observer) {
+    public void observeCommand(LifecycleOwner owner, final String key, final Observer<Object> observer) {
         ActivityDataViewModel viewModel = getViewModel(owner);
         viewModel.commandDispatcher.observe(owner, new Observer<Pair<String, Object>>() {
             @Override
@@ -74,18 +74,18 @@ public class ActivityDataHelper {
 
     }
 
-    void observeCommand(LifecycleOwner owner, DataObserver observer) {
+    public void observeCommand(LifecycleOwner owner, DataObserver observer) {
         ActivityDataViewModel viewModel = getViewModel(owner);
         viewModel.commandDispatcher.observe(owner, observer);
     }
 
-    void dispatchCommand(LifecycleOwner owner, String name, Object data) {
+    public void dispatchCommand(LifecycleOwner owner, String name, Object data) {
         ActivityDataViewModel viewModel = getViewModel(owner);
         viewModel.commandDispatcher.setValue(new Pair<String, Object>(name, data));
         viewModel.commandDispatcher.setValue(null);
     }
 
-    void destroy(LifecycleOwner owner) {
+    public void destroy(LifecycleOwner owner) {
         if (mViewModel == null) {
             return;
         }

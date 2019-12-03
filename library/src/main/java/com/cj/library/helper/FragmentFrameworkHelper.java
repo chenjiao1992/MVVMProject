@@ -16,7 +16,7 @@ public class FragmentFrameworkHelper {
     private IActivityData mIActivityData = null;
     private IActivityOtherFragmentData mIActivityOtherFragmentData = null;
 
-    void onAttach(Context context) {
+    public void onAttach(Context context) {
         if (context instanceof IActivityData) {
             mIActivityData = (IActivityData) context;
         }
@@ -25,12 +25,12 @@ public class FragmentFrameworkHelper {
         }
     }
 
-    void onDetach() {
+    public void onDetach() {
         mIActivityData = null;
         mIActivityOtherFragmentData = null;
     }
 
-    String getTag(Fragment fragment) {
+    public String getTag(Fragment fragment) {
         String tag = fragment.getTag();
         if (TextUtils.isEmpty(tag)) {
             return fragment.getClass().getSimpleName();
@@ -38,19 +38,19 @@ public class FragmentFrameworkHelper {
         return tag;
     }
 
-    void sendDataToActivity(Fragment sender, String name, Object data) {
+    public void sendDataToActivity(Fragment sender, String name, Object data) {
         mIActivityData.onReceiveDataFromFragment(getTag(sender), name, data);
     }
 
-    void sendDataToOtherFragment(Fragment sender, String receiverTag, String name, Object data) {
+    public void sendDataToOtherFragment(Fragment sender, String receiverTag, String name, Object data) {
         mIActivityOtherFragmentData.onReceiveOtherFragmentData(getTag(sender), receiverTag, name, data);
     }
 
-    Object queryActivityData(Fragment query, String name, Object data) {
+    public Object queryActivityData(Fragment query, String name, Object data) {
         return mIActivityData.onQueryDataFromFragment(getTag(query), name, data);
     }
 
-    Object queryOtherFragmentData(Fragment sender, String receiverTag, String name, Object data) {
+    public Object queryOtherFragmentData(Fragment sender, String receiverTag, String name, Object data) {
         return mIActivityOtherFragmentData.onQueryOtherFragmentData(
                 getTag(sender), receiverTag, name, data);
     }

@@ -20,8 +20,17 @@ import androidx.lifecycle.Observer;
 public class MutableKVLiveData<K, V> extends LiveData<Pair<K, V>> implements Map<K, V> {
     private HashMap<K, V> mMap = new HashMap();
 
-    public void observeKey(LifecycleOwner owner, Observer<Object> observer) {
-
+    public void observeKey(LifecycleOwner owner, final Observer<Object> observer) {
+        observe(owner, new Observer<Pair<K, V>>() {
+            @Override
+            public void onChanged(Pair<K, V> kvPair) {
+                if (kvPair == null) {
+                    observer.onChanged(null);
+                    return;
+                }
+                observer.onChanged(kvPair.second);
+            }
+        });
     }
 
     @Override

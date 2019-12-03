@@ -1,15 +1,24 @@
 package com.cj.library.base;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
+import com.cj.library.R;
 import com.cj.library.helper.ActivityDataHelper;
 import com.cj.library.helper.FragmentFrameworkHelper;
 import com.cj.library.helper.RefreshHelper;
 import com.cj.library.model.DataObserver;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 
 /**
@@ -40,6 +49,57 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
         mToolbar.setTitle(toolbarTittle);
     }
 
+
+    boolean isInViewPager() {
+        return false;
+    }
+
+    protected int getToolbarId() {
+        return R.id.toolbar;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return doInflate(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!isInViewPager() && !getUserVisibleHint()) {//todo  对这里的逻辑不是很理解
+            return;
+        }
+        onPreparedOrRefresh();
+    }
+
+    private void onPreparedOrRefresh() {
+        mRefreshHelper.resume();
+        if (mRefreshHelper.firstEnter()) {
+            onPrepared();
+        } else if (mRefreshHelper.shouldRefresh()) {
+            onRefresh();
+        }
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (!isInViewPager() || !mViewCreated)
+            return;
+        if (!isVisibleToUser) {
+            mRefreshHelper.pause();
+        } else {
+            onPreparedOrRefresh();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        mRefreshHelper.pause();
+        super.onPause();
+    }
+
     @Override
     public void onReceiveDataFromActivity(String name, Object data) {
 
@@ -47,7 +107,7 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
 
     @Override
     public void sendDataToActivity(String name, Object data) {
-
+        mFragmentFrameworkHelper.sendDataToActivity(this, name, data);
     }
 
     @Override
@@ -57,7 +117,7 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
 
     @Override
     public Object queryActivityData(String name, Object data) {
-        return null;
+        return mFragmentFrameworkHelper.queryActivityData(this, name, data);
     }
 
     @Override
@@ -72,7 +132,59 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
 
     @Override
     public <T extends View> T findViewById(int viewId) {
-        return null;
+        try {
+            return getView().findViewById(viewId);
+        } catch (ClassCastException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public FragmentManager getFragmentManagerEx() {
+        return getChildFragmentManager();
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mViewCreated = true;
+        if (savedInstanceState != null) {
+            recreateData(savedInstanceState);
+        }
+        Toolbar toolbar = findViewById(getToolbarId());
+        if (toolbar != null) {
+            setToolbar(toolbar);
+        }
+
+        onConfig(savedInstanceState);
+        if (toolbar != null) {
+            onToolbarPrepare(toolbar, toolbar.getMenu());
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        resetToolbar();
+        mActivityDataHelper.destroy(this);
+        mViewCreated = false;
+        mRefreshHelper.destory();
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mFragmentFrameworkHelper.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        mFragmentFrameworkHelper.onDetach();
+        super.onDetach();
+    }
+
+    protected void recreateData(Bundle saveInstanceState) {
     }
 
     @Override
@@ -96,18 +208,36 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
     }
 
     @Override
-    public void setRefreshThreshold(Long refreshThreshold) {
-
+    final public void setRefreshThreshold(Long refreshThreshold) {
+        mRefreshHelper.setRefreshThreshold(refreshThreshold);
     }
 
     @Override
     public void setToolbar(Toolbar toolbar) {
+        resetToolbar();
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onToolbarNavigationClick();
+            }
+        });
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return onToolbarMenuItemClick(item);
+            }
+        });
 
+    }
+
+    private void resetToolbar() {
+        mToolbar.setNavigationOnClickListener(null);
+        mToolbar.setOnMenuItemClickListener(null);
     }
 
     @Override
     public Toolbar getToolbar() {
-        return null;
+        return mToolbar;
     }
 
     @Override
@@ -121,42 +251,42 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
     }
 
     @Override
-    public void onToolbarMenuItemClick() {
-
+    public boolean onToolbarMenuItemClick(MenuItem menuItem) {
+        return false;
     }
 
     @Override
     public void observeData(String key, Observer<Object> observer) {
-
+        mActivityDataHelper.observeData(this, key, observer);
     }
 
     @Override
     public void observeData(DataObserver observer) {
-
+        mActivityDataHelper.observeData(this, observer);
     }
 
     @Override
     public void dispatchData(String key, Object object) {
-
+        mActivityDataHelper.changeData(this, key, object);
     }
 
     @Override
     public Object queryData(String key) {
-        return null;
+        return mActivityDataHelper.queryData(this, key);
     }
 
     @Override
     public void observeCommand(String name, Observer observer) {
-
+        mActivityDataHelper.observeCommand(this, name, observer);
     }
 
     @Override
     public void observeCommand(DataObserver observer) {
-
+        mActivityDataHelper.observeCommand(this, observer);
     }
 
     @Override
     public void dispatchCommand(String name, Object data) {
-
+        mActivityDataHelper.dispatchCommand(this, name, data);
     }
 }

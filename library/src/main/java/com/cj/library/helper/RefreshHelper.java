@@ -27,6 +27,10 @@ public class RefreshHelper {
 
     }
 
+    public boolean isResume() {
+        return mResume;
+    }
+
     public void resume() {
         mResume = true;
     }

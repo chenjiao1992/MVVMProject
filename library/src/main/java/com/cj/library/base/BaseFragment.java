@@ -64,6 +64,11 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
         return doInflate(inflater, container, savedInstanceState);
     }
 
+    /**
+     填充的布局
+     */
+    protected abstract View doInflate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+
     @Override
     public void onResume() {
         super.onResume();
@@ -162,6 +167,11 @@ public abstract class BaseFragment extends Fragment implements IBaseFramework, I
             onToolbarPrepare(toolbar, toolbar.getMenu());
         }
     }
+
+    /**
+     初始化,做findViewByID等控件的初始化操作
+     */
+    protected abstract void onConfig(Bundle arguments);
 
     @Override
     public void onDestroyView() {

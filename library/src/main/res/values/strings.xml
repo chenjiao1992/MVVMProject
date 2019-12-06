@@ -44,4 +44,20 @@
     </declare-styleable>
     <item name="toolbar"
         type="id" />
+    <style name="wishBottleNameStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/shape_corner_white_8dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxEms">6</item>
+        <item name="android:maxLines">1</item>
+    </style>
+    <color name="white">#FFFFFF</color>
 </resources>

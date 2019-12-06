@@ -1,4 +1,4 @@
-package com.cj.architecture.callback;
+package com.cj.mvvmproject.callback;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

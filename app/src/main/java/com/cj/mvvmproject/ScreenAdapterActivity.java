@@ -1,18 +1,28 @@
 package com.cj.mvvmproject;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.Intent;
 
-import androidx.annotation.Nullable;
+import com.cj.library.base.BaseBindingActivity;
+import com.cj.mvvmproject.databinding.ActivityScreenAdapterBinding;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  Create by chenjiao at 2019/12/6 0006
  描述：屏幕适配方案demo
  */
-public class ScreenAdapterActivity extends Activity {
+public class ScreenAdapterActivity extends BaseBindingActivity<ActivityScreenAdapterBinding> {
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_adapter);
+    public int getLayoutId() {
+        return R.layout.activity_screen_adapter;
+    }
+
+
+
+
+    @Override
+    protected void onConfig(@NotNull Intent arguments) {
+
     }
 }

@@ -2,9 +2,7 @@ package com.cj.library.utils
 
 import android.app.Application
 
-/**
- * 由 Harreke 创建于 2017/9/27.
- */
+
 object MetricsUtil {
     var Density = 1F
     var ScaledDensity = 1F

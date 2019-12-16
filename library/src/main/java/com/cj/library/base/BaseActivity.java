@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseFra
     private Toolbar mToolbar;
     private ActivityDataHelper mActivityDataHelper;
     private ActivityFrameworkHelper mActivityFrameworkHelper;
-    private RefreshHelper mRefreshHelper;
+    private RefreshHelper mRefreshHelper = new RefreshHelper();
     private long mLaunchDelay = 300L;
 
     @Override
@@ -46,7 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseFra
 
     }
 
-    protected abstract View doInflate(BaseActivity activity, Bundle savedInstanceState);
+    protected abstract void doInflate(BaseActivity activity, Bundle savedInstanceState);
 
     @Override
     public void onRefresh() {

@@ -23,9 +23,6 @@ import java.io.PrintWriter
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
-/**
- * 由 Harreke 创建于 2017/9/27.
- */
 object FileUtil {
     fun copyFile(source: File, target: File): Boolean {
         val create: Boolean

@@ -2,21 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.cj.library.widget.ChatBubbleView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:cbv_cornerRadius="4dp"
-        android:background="@color/colorAccent"
-        app:cbv_pinDirection="right"
-        app:cbv_pinHeight="0dp"
-        app:cbv_pinWidth="0dp">
+        app:cbv_pinDirection="top"
+        app:cbv_cornerRadius="8dp"
+        app:cbv_pinWidth="6dp"
+
+        app:cbv_pinHeight="10dp"
+        app:cbv_pinMargin="0dp"
+        app:cbv_pinTipMargin="-4dp"
+        app:cbv_pinTipRoundRadius="1dp"
+        app:cbv_borderColor="@color/colorPrimary"
+        app:cbv_borderWidth="1dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="我是气泡" />
     </com.cj.library.widget.ChatBubbleView>
 </LinearLayout>

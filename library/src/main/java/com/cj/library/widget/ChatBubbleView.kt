@@ -13,9 +13,7 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.cj.library.R
 
-/**
- * Created by admin on 2017/9/12.
- */
+
 class ChatBubbleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
     private val PIN_DIRECTION_LEFT = 0
     private val PIN_DIRECTION_TOP = 1

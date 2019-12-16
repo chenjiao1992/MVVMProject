@@ -4,9 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 
-/**
- * 由 Harreke 创建于 2017/11/27.
- */
+
 @Suppress("DEPRECATION", "UNCHECKED_CAST")
 object ResourceUtil {
     fun obtainResourceId(context: Context, attr: Int): Int {

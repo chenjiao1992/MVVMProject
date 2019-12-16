@@ -4,9 +4,7 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-/**
- * 由 Harreke 创建于 2017/9/26.
- */
+
 object IOUtil {
     fun copy(inputStream: InputStream, outputStream: OutputStream): Boolean {
         var success = true

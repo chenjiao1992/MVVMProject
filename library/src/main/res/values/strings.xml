@@ -41,6 +41,8 @@
             format="dimension" />
         <attr name="cbv_shadowDy"
             format="dimension" />
+        <attr name="cbv_background"
+            format="color" />
     </declare-styleable>
     <item name="toolbar"
         type="id" />

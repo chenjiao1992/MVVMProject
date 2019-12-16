@@ -10,9 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 
-/**
- * 由 Harreke 创建于 2017/9/18.
- */
+
 object ViewUtil {
     private val TINT_ATTRS = intArrayOf(
             android.R.attr.backgroundTint, //in v7

@@ -10,9 +10,6 @@ import android.text.style.ImageSpan
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 
-/**
- * 由 Harreke 创建于 2017/11/14.
- */
 fun String?.notNullNorEmpty() = this != null && this.isNotEmpty()
 
 fun String?.notNullNorBlank() = this != null && this.isNotBlank()

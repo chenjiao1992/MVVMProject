@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuContact"
+        android:icon="@drawable/vector_chat_menu_contact_default"
+        android:title="通讯录"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menuMore"
+        android:icon="@drawable/vector_menu_plus"
+        android:title="更多"
+        app:showAsAction="always">
+
+        <menu>
+            <!-- 将group中的菜单项放于一个组里面 -->
+            <item
+                android:id="@+id/menuCreateGroup"
+                android:icon="@drawable/menu_create_group"
+                android:title="创建群组"
+                app:showAsAction="always"/>
+            <item
+                android:id="@+id/menuAdd"
+                android:icon="@drawable/menu_add_friend"
+                android:title="加好友/群"
+                app:showAsAction="always"/>
+
+            <item
+                android:id="@+id/menuSecretary"
+                android:icon="@drawable/menu_change_secretary"
+                android:title="更换小秘书"
+                app:showAsAction="always"/>
+
+            <item
+                android:id="@+id/menuQRCodeScan"
+                android:icon="@drawable/menu_qrcode_scan"
+                android:title="扫一扫"
+                app:showAsAction="always"/>
+
+        </menu>
+
+    </item>
+
+</menu>

@@ -7,24 +7,31 @@
     android:orientation="vertical">
 
     <com.cj.library.widget.ChatBubbleView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:cbv_pinDirection="top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cbv_borderColor="@android:color/black"
+        app:cbv_borderWidth="1dp"
         app:cbv_cornerRadius="8dp"
-        app:cbv_pinWidth="6dp"
-
-        app:cbv_pinHeight="10dp"
-        app:cbv_pinMargin="0dp"
-        app:cbv_pinTipMargin="-4dp"
-        app:cbv_pinTipRoundRadius="1dp"
-        app:cbv_borderColor="@color/colorPrimary"
-        app:cbv_borderWidth="1dp">
+        app:cbv_pinDirection="bottom"
+        app:cbv_pinHeight="20dp"
+        app:cbv_pinMargin="50dp"
+        app:cbv_pinTipMargin="0dp"
+        app:cbv_pinTipRoundRadius="8dp"
+        app:cbv_pinWidth="20dp">
 
         <TextView
-            android:padding="8dp"
-            android:background="@color/colorAccent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="我是气泡" />
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FF627D"
+            android:maxWidth="210dp"
+            android:paddingLeft="18dp"
+            android:paddingTop="25dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="25dp"
+            android:text="婚礼仪式部分结束，狂欢部分正式开始！抢红包、送礼物、闹洞房，燥起来吧！"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
     </com.cj.library.widget.ChatBubbleView>
 </LinearLayout>

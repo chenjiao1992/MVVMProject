@@ -36,8 +36,8 @@ import androidx.lifecycle.Observer;
 public abstract class BaseActivity extends AppCompatActivity implements IBaseFramework, IActivityData, IActivityOtherFragmentData {
     private AndroidBug5497Workaround mAndroidBug5497Workaround;
     private Toolbar mToolbar;
-    private ActivityDataHelper mActivityDataHelper;
-    private ActivityFrameworkHelper mActivityFrameworkHelper;
+    private ActivityDataHelper mActivityDataHelper = new ActivityDataHelper();
+    private ActivityFrameworkHelper mActivityFrameworkHelper = new ActivityFrameworkHelper();
     private RefreshHelper mRefreshHelper = new RefreshHelper();
     private long mLaunchDelay = 300L;
 

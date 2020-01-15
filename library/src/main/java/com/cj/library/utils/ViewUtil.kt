@@ -2,6 +2,7 @@ package com.cj.library.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.PorterDuff
 import android.graphics.Rect
 import android.os.Build
@@ -10,8 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 
-
 object ViewUtil {
+    val statusBarHeight: Int
+        get() = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"))
     private val TINT_ATTRS = intArrayOf(
             android.R.attr.backgroundTint, //in v7
             android.R.attr.backgroundTintMode) //in v7
@@ -26,6 +28,16 @@ object ViewUtil {
                     paddingTop,
                     view.paddingRight,
                     view.paddingBottom)
+        }
+    }
+
+    fun patchTopPadding(view: View) {
+        if (Build.VERSION.SDK_INT >= 19) {
+            val left = view.paddingLeft
+            val top = view.paddingTop
+            val right = view.paddingRight
+            val bottom = view.paddingBottom
+            view.setPadding(left, top + statusBarHeight, right, bottom)
         }
     }
 
@@ -48,12 +60,12 @@ object ViewUtil {
 
     fun getStatusBarHeight(context: Context): Int {
         val resources = context.resources
-        return resources.getDimensionPixelSize(ResourceUtil.getResourceId(context,"status_bar_height", "dimen", "android"))
+        return resources.getDimensionPixelSize(ResourceUtil.getResourceId(context, "status_bar_height", "dimen", "android"))
     }
 
     fun getNavigationBarHeight(context: Context): Int {
         val resources = context.resources
-        return resources.getDimensionPixelSize(ResourceUtil.getResourceId(context,"navigation_bar_height", "dimen", "android"))
+        return resources.getDimensionPixelSize(ResourceUtil.getResourceId(context, "navigation_bar_height", "dimen", "android"))
     }
 
     fun setPaddings(view: View, rect: Rect) {

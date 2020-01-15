@@ -1,81 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener"/>
+
+        <import type="android.view.View"/>
+    </data>
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_wishbottle"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
+        <com.cj.library.widget.CommonToolbar
+            app:title="主页"
+            app:popupTheme="@style/OverflowMenuStyle"
+            app:menu="@menu/menu_some_item"
+            style="@style/WeChatToolbar"/>
 
-        <com.cj.library.widget.ChatBubbleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cbv_borderColor="@android:color/black"
-            app:cbv_borderWidth="1dp"
-            app:cbv_cornerRadius="8dp"
-            app:cbv_pinDirection="bottom"
-            app:cbv_pinHeight="20dp"
-            app:cbv_pinMargin="50dp"
-            app:cbv_pinTipMargin="0dp"
-            app:cbv_pinTipRoundRadius="8dp"
-            app:cbv_pinWidth="20dp">
+        <TextView
+            android:id="@+id/tvBobbleView"
+            style="@style/commomTextStyle"
+            android:gravity="center"
+            android:onClick="@{onClick}"
+            android:text="气泡页面(BobbleView)"/>
 
-            <TextView
-                android:id="@+id/tvContent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#FF627D"
-                android:maxWidth="210dp"
-                android:paddingLeft="18dp"
-                android:paddingTop="25dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="25dp"
-                android:text="婚礼仪式部分结束，狂欢部分正式开始！抢红包、送礼物、闹洞房，燥起来吧！"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvScreenAdapter"
+            style="@style/commomTextStyle"
+            android:gravity="center"
+            android:onClick="@{onClick}"
+            android:text="屏幕适配页面"/>
 
-        </com.cj.library.widget.ChatBubbleView>
-
-        <fragment
-            android:id="@+id/ftDemoFragment"
-            android:name="com.cj.mvvmproject.fragment.DemoFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/fragment_demo" />
+        <TextView
+            android:id="@+id/tvNode"
+            style="@style/commomTextStyle"
+            android:gravity="center"
+            android:onClick="@{onClick}"
+            android:text="管理流程页面"/>
     </LinearLayout>
-    <!--    <androidx.drawerlayout.widget.DrawerLayout-->
-    <!--        android:id="@+id/drawerLayout"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        tools:context=".MainActivity">-->
 
-    <!--        <com.sothree.slidinguppanel.SlidingUpPanelLayout-->
-    <!--            android:id="@+id/slidingLayout"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent">-->
-
-    <!--            <fragment-->
-    <!--                android:id="@+id/main_fragment_host"-->
-    <!--                android:name="androidx.navigation.fragment.NavHostFragment"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                app:defaultNavHost="true"-->
-    <!--                />-->
-
-    <!--            <fragment-->
-    <!--                android:id="@+id/slide_fragment_host"-->
-    <!--                android:name="androidx.navigation.fragment.NavHostFragment"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent" />-->
-    <!--        </com.sothree.slidinguppanel.SlidingUpPanelLayout>-->
-
-    <!--        <fragment-->
-    <!--            android:id="@+id/drawer_fragment_host"-->
-    <!--            android:name="androidx.navigation.fragment.NavHostFragment"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent" />-->
-    <!--    </androidx.drawerlayout.widget.DrawerLayout>-->
 
 </layout>

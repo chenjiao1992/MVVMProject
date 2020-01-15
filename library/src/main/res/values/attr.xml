@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="CommonToolbar">
+      <attr name="immersive" format="boolean"/>
+      <attr name="menu" format="reference"/>
+      <attr name="title_drawableLeft" format="reference"/>
+      <attr name="title_drawableTop" format="reference"/>
+      <attr name="title_drawableRight" format="reference"/>
+      <attr name="title_drawableBottom" format="reference"/>
+      <attr name="title_drawablePadding" format="dimension"/>
+      <attr name="title_maxWidth" format="dimension"/>
+      <attr name="subtitle_drawableLeft" format="reference"/>
+      <attr name="subtitle_drawableTop" format="reference"/>
+      <attr name="subtitle_drawableRight" format="reference"/>
+      <attr name="subtitle_drawableBottom" format="reference"/>
+      <attr name="subtitle_drawablePadding" format="dimension"/>
+      <attr name="subtitle_paddingTop" format="dimension"/>
+      <attr name="subtitle_paddingLeft" format="dimension"/>
+      <attr name="subtitle_paddingBottom" format="dimension"/>
+      <attr name="subtitle_paddingRight" format="dimension"/>
+      <attr name="subtitle_padding" format="dimension"/>
+      <attr name="toolbar_underLine" format="boolean"/>
+      <attr name="toolbar_underLineColor" format="color"/>
+  </declare-styleable>
+</resources>

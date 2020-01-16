@@ -78,4 +78,41 @@ final class FastJsonResponseBodyConverter<T> implements Converter<ResponseBody, 
         value.close();
       }
   }
+
+
+  //todo 注释掉上面的方法,用此方法,就可以访问guolin的接口成功
+//  @Override
+//  public T convert(ResponseBody value) throws IOException {
+//    if (value == null) {
+//      return null;
+//    }
+//    String response = value.string();
+//    try {
+//      //无需解析code,直接返回
+//      if (NetConstants.INSTANCE.getNO_CODE().equalsIgnoreCase(codeKey)){
+//        if (mType == String.class){
+//          return (T) response;
+//        }else {
+//          return JSON.parseObject(response, mType, FastJsonConfigProvider.getParseConfig(), JSON.DEFAULT_PARSER_FEATURE,
+//                  features != null ? features : EMPTY_SERIALIZER_FEATURES);
+//        }
+//        //需要解析
+//      }else {
+//        if (mType == String.class){
+//          return (T) response;
+//        }else {
+//          return JSON.parseObject(response, mType, FastJsonConfigProvider.getParseConfig(), JSON.DEFAULT_PARSER_FEATURE,
+//                  features != null ? features : EMPTY_SERIALIZER_FEATURES);
+//        }
+//      }
+//    } catch (Throwable e) {
+//      if (e instanceof ServerException){
+//        throw (ServerException)e;//让订阅者拿到错误code和message
+//      }else {//其他异常
+//        throw new TransformException(e.getMessage(),e.getCause());
+//      }
+//    } finally {
+//      value.close();
+//    }
+//  }
 }

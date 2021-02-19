@@ -1,17 +1,16 @@
 package com.cj.mvvmproject
 
 import android.content.Intent
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.cj.library.base.BaseBindingActivity
-import com.cj.mvvmproject.api.MainApi
-import com.cj.mvvmproject.api.Province
 import com.cj.mvvmproject.databinding.ActivityMainBinding
-import com.cj.mvvmproject.node.NodeActivity
-import com.cj.sdknet.ServiceGenerator
-import com.cj.sdknet.net.callback.APISubscriber
+import com.cj.net.activity.NetDemoActivity
+import com.cj.node.activity.BubbleDemoActivity
+import com.cj.node.activity.NodeActivity
+import com.cj.screen.activity.ScreenAdapterActivity
+import com.cj.video.activity.VideoCompressorActivity
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     override fun getLayoutId(): Int = R.layout.activity_main
@@ -19,27 +18,23 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     override fun onConfig(arguments: Intent?) {
         binding.onClick = View.OnClickListener {
             when (it.id) {
-                R.id.tvBobbleView ->
+                R.id.ll_bobbleView ->
                     startActivity(Intent(this, BubbleDemoActivity::class.java))
-                R.id.tvNode ->
+                R.id.ll_node ->
                     startActivity(Intent(this, NodeActivity::class.java))
-                R.id.tvScreenAdapter ->
+                R.id.ll_screen ->
                     startActivity(Intent(this, ScreenAdapterActivity::class.java))
+                R.id.ll_video -> {
+                    startActivity(Intent(this, VideoCompressorActivity::class.java))
+                }
+                R.id.ll_skin -> {
+                    // startActivity(Intent(this, VideoCompressorActivity::class.java))
+                }
+                R.id.ll_net -> {
+                    startActivity(Intent(this, NetDemoActivity::class.java))
+                }
             }
         }
-        ServiceGenerator.generateService(MainApi::class.java)?.getProvices("http://guolin.tech")
-            ?.subscribe(object : APISubscriber<ArrayList<Province>>() {
-                override fun onNext(t: ArrayList<Province>?) {
-                    Toast.makeText(this@MainActivity, "onNext=${t?.size}", Toast.LENGTH_SHORT).show()
-                    Log.d("MainActivity", "onNext=${t?.size}")
-                }
-
-                override fun onError(code: Int, message: String?, t: Throwable?) {
-                    Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
-                    //todo 这个接口调用会提示异常,是jsonArray不能转换为jsonObject,因为是因为 FastJsonResponseBodyConverter中需要与服务端约定好传data,和msg
-                }
-
-            })
     }
 
     override fun onPrepared() {

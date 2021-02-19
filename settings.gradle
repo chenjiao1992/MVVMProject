@@ -1,2 +1,2 @@
-include ':app',  ':library', ':sdknet'
+include ':app',  ':library', ':sdknet',':videocompressor'
 rootProject.name='MVVMProject'

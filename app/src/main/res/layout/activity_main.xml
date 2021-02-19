@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,37 +15,271 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_wishbottle"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <com.cj.library.widget.CommonToolbar
-            app:title="主页"
-            app:popupTheme="@style/OverflowMenuStyle"
+            style="@style/WeChatToolbar"
             app:menu="@menu/menu_some_item"
-            style="@style/WeChatToolbar"/>
+            app:popupTheme="@style/OverflowMenuStyle"
+            app:title="主页"/>
 
-        <TextView
-            android:id="@+id/tvBobbleView"
-            style="@style/commomTextStyle"
-            android:gravity="center"
-            android:onClick="@{onClick}"
-            android:text="气泡页面(BobbleView)"/>
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/srl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnablePureScrollMode="true">
 
-        <TextView
-            android:id="@+id/tvScreenAdapter"
-            style="@style/commomTextStyle"
-            android:gravity="center"
-            android:onClick="@{onClick}"
-            android:text="屏幕适配页面"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvNode"
-            style="@style/commomTextStyle"
-            android:gravity="center"
-            android:onClick="@{onClick}"
-            android:text="管理流程页面"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_bobbleView"
+                        android:onClick="@{onClick}"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_press_color_white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_bubble"
+                            android:tint="@color/main"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="气泡页面(BobbleView)"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_content"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:rotation="180"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_back"
+                            android:tint="@color/gray_light"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_node"
+                        android:onClick="@{onClick}"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_press_color_white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_dialog"
+                            android:tint="@color/main"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="对话框流程管理"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_content"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:rotation="180"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_back"
+                            android:tint="@color/gray_light"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{onClick}"
+                        android:background="@drawable/bg_press_color_white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_video"
+                            android:tint="@color/main"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="视频压缩"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_content"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:rotation="180"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_back"
+                            android:tint="@color/gray_light"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_screen"
+                        android:onClick="@{onClick}"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_press_color_white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_screen"
+                            android:tint="@color/main"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="屏幕适配页面"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_content"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:rotation="180"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_back"
+                            android:tint="@color/gray_light"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_skin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{onClick}"
+                        android:background="@drawable/bg_press_color_white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_skin"
+                            android:tint="@color/main"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="换肤"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_content"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:rotation="180"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_back"
+                            android:tint="@color/gray_light"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_net"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_press_color_white"
+                        android:gravity="center"
+                        android:onClick="@{onClick}"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_net"
+                            android:tint="@color/main"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:text="网络请求"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_content"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:rotation="180"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_back"
+                            android:tint="@color/gray_light"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
     </LinearLayout>
-
 
 </layout>

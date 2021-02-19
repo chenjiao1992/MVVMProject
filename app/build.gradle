@@ -45,12 +45,40 @@ android {
     dataBinding {
         enabled = true
     }
+
+    //每个业务都单独放
+    sourceSets {
+        main {
+            assets.srcDirs += [
+                    'src/business/bubble/assets'
+            ]
+            java.srcDirs += [
+                    'src/business/bubble/java'
+                    , 'src/business/node/java'
+                    , 'src/business/screen/java'
+                    , 'src/business/skin/java'
+                    , 'src/business/video/java'
+                    , 'src/business/net/java'
+            ]
+
+            res.srcDirs += [
+                    'src/business/bubble/res'
+                    , 'src/business/node/res'
+                    , 'src/business/screen/res'
+                    , 'src/business/skin/res'
+                    , 'src/business/video/res'
+                    , 'src/business/net/res'
+            ]
+        }
+    }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':library')
     implementation project(':sdknet')
+    implementation project(':videocompressor')
     //widget
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-rc01'
@@ -70,6 +98,8 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.1'
     // 网络操作--有网络操作添加
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHorizontal:1.0.0-beta-1'
 }
 repositories {
     mavenCentral()

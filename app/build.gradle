@@ -66,8 +66,11 @@ android {
                     , 'src/business/node/res'
                     , 'src/business/screen/res'
                     , 'src/business/skin/res'
+                    , 'src/business/theme/green/res'
+                    , 'src/business/theme/red/res'
                     , 'src/business/video/res'
                     , 'src/business/net/res'
+
             ]
         }
     }
@@ -100,6 +103,13 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshHorizontal:1.0.0-beta-1'
+
+    //换肤
+    implementation 'skin.support:skin-support:4.0.5'                   // skin-support
+    implementation 'skin.support:skin-support-appcompat:4.0.5'         // skin-support 基础控件支持
+    implementation 'skin.support:skin-support-design:4.0.5'            // skin-support-design material design 控件支持[可选]
+    implementation 'skin.support:skin-support-cardview:4.0.5'          // skin-support-cardview CardView 控件支持[可选]
+    implementation 'skin.support:skin-support-constraint-layout:4.0.5' // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
 }
 repositories {
     mavenCentral()

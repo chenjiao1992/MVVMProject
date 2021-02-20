@@ -1,10 +1,12 @@
-package com.cj.library.base
+package com.cj.mvvmproject
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.cj.library.base.BaseActivity
+import com.cj.library.base.BaseHandlePermissionActivity
+import com.cj.library.extension.setStatusBarLightMode
+import skin.support.observe.SkinObservable
 
 /**
  *  Create by chenjiao at 2019/12/13 0013
@@ -25,4 +27,15 @@ abstract class BaseBindingActivity<BINDING : ViewDataBinding> : BaseHandlePermis
         super.onDestroy()
     }
 
+    override fun updateSkin(observable: SkinObservable?, o: Any?) {
+        setStatusBarLightMode(!isDarkTheme)
+    }
+
+     val isDarkTheme: Boolean
+        get() {
+            val themeName = AccountManager.themeName
+            return isDarkTheme(themeName)
+        }
+
+    fun isDarkTheme(themeName: String) = themeName == "red"
 }

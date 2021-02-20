@@ -7,7 +7,7 @@ import android.os.Build
 import android.os.Environment
 import android.util.Log
 import android.view.View
-import com.cj.library.base.BaseBindingActivity
+import com.cj.mvvmproject.BaseBindingActivity
 import com.cj.library.utils.Util
 import com.cj.mvvmproject.R
 import com.cj.mvvmproject.databinding.ActivityVideoCompressorBinding

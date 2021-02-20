@@ -24,7 +24,7 @@
             style="@style/WeChatToolbar"
             app:menu="@menu/menu_some_item"
             app:popupTheme="@style/OverflowMenuStyle"
-            app:title="主页"/>
+            app:title="换肤"/>
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/srl"
@@ -43,20 +43,19 @@
 
                     <LinearLayout
                         android:id="@+id/ll_bobbleView"
-                        android:onClick="@{onClick}"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="center"
+                        android:onClick="@{onClick}"
                         android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp">
 
                         <ImageView
                             android:layout_width="18dp"
-                            android:layout_height="18dp"
+                            android:layout_height="13dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/icon_bubble"
-                          />
+                            android:src="@drawable/icon_bubble"/>
 
                         <TextView
                             android:layout_width="0dp"
@@ -81,10 +80,10 @@
 
                     <LinearLayout
                         android:id="@+id/ll_node"
-                        android:onClick="@{onClick}"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="center"
+                        android:onClick="@{onClick}"
                         android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp">
@@ -120,8 +119,8 @@
                         android:id="@+id/ll_video"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{onClick}"
                         android:gravity="center"
+                        android:onClick="@{onClick}"
                         android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp">
@@ -155,10 +154,10 @@
 
                     <LinearLayout
                         android:id="@+id/ll_screen"
-                        android:onClick="@{onClick}"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="center"
+                        android:onClick="@{onClick}"
                         android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp">
@@ -194,8 +193,8 @@
                         android:id="@+id/ll_skin"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{onClick}"
                         android:gravity="center"
+                        android:onClick="@{onClick}"
                         android:orientation="horizontal"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp">
@@ -263,12 +262,19 @@
                             android:tint="@color/gray_light"/>
 
                     </LinearLayout>
-
+                    <TextView
+                        android:id="@+id/changeThemeGreen"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:background="@color/text_accent"
+                        android:text="一键换肤"
+                        android:onClick="@{onClick}"/>
                 </LinearLayout>
             </ScrollView>
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
     </LinearLayout>
 
 </layout>

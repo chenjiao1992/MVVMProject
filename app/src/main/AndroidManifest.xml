@@ -30,6 +30,7 @@
         <activity android:name="com.cj.video.activity.VideoActivity"/>
         <activity android:name="com.cj.video.activity.VideoCompressorActivity"/>
         <activity android:name="com.cj.net.activity.NetDemoActivity"/>
+        <activity android:name="com.cj.skin.activity.SkinActivity"/>
     </application>
 
 </manifest>

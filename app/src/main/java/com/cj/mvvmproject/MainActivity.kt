@@ -4,12 +4,12 @@ import android.content.Intent
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.cj.library.base.BaseBindingActivity
 import com.cj.mvvmproject.databinding.ActivityMainBinding
 import com.cj.net.activity.NetDemoActivity
 import com.cj.node.activity.BubbleDemoActivity
 import com.cj.node.activity.NodeActivity
 import com.cj.screen.activity.ScreenAdapterActivity
+import com.cj.skin.activity.SkinActivity
 import com.cj.video.activity.VideoCompressorActivity
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
@@ -28,7 +28,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                     startActivity(Intent(this, VideoCompressorActivity::class.java))
                 }
                 R.id.ll_skin -> {
-                    // startActivity(Intent(this, VideoCompressorActivity::class.java))
+                     startActivity(Intent(this, SkinActivity::class.java))
                 }
                 R.id.ll_net -> {
                     startActivity(Intent(this, NetDemoActivity::class.java))
@@ -61,5 +61,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         }
         return super.onToolbarMenuItemClick(menuItem)
     }
+
+
 
 }

@@ -2,7 +2,7 @@
 <resources>
   <declare-styleable name="CommonToolbar">
       <attr name="immersive" format="boolean"/>
-      <attr name="menu" format="reference"/>
+      <attr name="menu_item_text_color" format="reference|color"/>
       <attr name="title_drawableLeft" format="reference"/>
       <attr name="title_drawableTop" format="reference"/>
       <attr name="title_drawableRight" format="reference"/>

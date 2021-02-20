@@ -1,10 +1,9 @@
 package com.cj.net.activity
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.cj.library.base.BaseBindingActivity
+import com.cj.mvvmproject.BaseBindingActivity
 import com.cj.mvvmproject.R
 import com.cj.mvvmproject.databinding.ActivityNetDemoBinding
 import com.cj.net.api.MainApi

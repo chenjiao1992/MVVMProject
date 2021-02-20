@@ -7,9 +7,22 @@ import android.os.Parcelable
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import org.json.JSONObject
 import java.io.Closeable
 import java.net.Socket
+fun Any?.toJson() = JsonUtil.toString(this)
 
+fun <T : Any> JSONObject?.toObject(clazz: Class<T>) = if (this == null) {
+    null
+} else {
+    JsonUtil.toObject(toString(), clazz)
+}
+
+fun <T : Any> String?.toObject(clazz: Class<T>) = JsonUtil.toObject(this, clazz)
+
+fun <T : Any> String?.toArray(clazz: Class<T>) = JsonUtil.toArray(this, clazz)
+
+fun <T : Any> Any?.transform(clazz: Class<T>) = JsonUtil.toObject(JsonUtil.toString(this), clazz)
 fun Closeable?.closeSafe() {
     try {
         this?.close()

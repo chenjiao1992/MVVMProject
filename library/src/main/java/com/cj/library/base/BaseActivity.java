@@ -22,18 +22,23 @@ import com.cj.library.utils.LeakUtil;
 
 import java.lang.reflect.Method;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.SkinAppCompatDelegateImpl;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
+import skin.support.observe.SkinObservable;
+import skin.support.observe.SkinObserver;
 
 /**
  Create by chenjiao at 2019/12/3 0003
  描述：
  */
-public abstract class BaseActivity extends AppCompatActivity implements IBaseFramework, IActivityData, IActivityOtherFragmentData {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseFramework, IActivityData, IActivityOtherFragmentData, SkinObserver {
     private AndroidBug5497Workaround mAndroidBug5497Workaround;
     private Toolbar mToolbar;
     private ActivityDataHelper mActivityDataHelper = new ActivityDataHelper();
@@ -54,6 +59,12 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseFra
     }
 
     protected void recreateData(Bundle savedInstanceState) {
+    }
+
+    @NonNull
+    @Override
+    public AppCompatDelegate getDelegate() {
+        return SkinAppCompatDelegateImpl.get(this, this);
     }
 
     /**

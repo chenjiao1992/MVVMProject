@@ -29,6 +29,7 @@
     <color name="gray_light">#999999</color>
     <!--文字颜色-->
     <color name="text_main">#4282f4</color>
+    <color name="theme_main">#FFF</color>
     <color name="text_accent">#f86734</color>
     <color name="text_white">#ffffff</color>
     <color name="text_white_alpha">#88ffffff</color>
@@ -36,4 +37,6 @@
     <color name="text_gray_light">#999999</color>
     <color name="text_gray_dark">#666666</color>
     <color name="text_black">#333333</color>
+    <color name="theme_toolbar_title">#333</color>
+    <color name="theme_color_c12">#E9E9E9</color>
 </resources>

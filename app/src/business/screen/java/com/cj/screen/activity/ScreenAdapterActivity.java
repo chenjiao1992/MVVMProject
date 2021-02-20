@@ -2,7 +2,7 @@ package com.cj.screen.activity;
 
 import android.content.Intent;
 
-import com.cj.library.base.BaseBindingActivity;
+import com.cj.mvvmproject.BaseBindingActivity;
 import com.cj.mvvmproject.R;
 import com.cj.mvvmproject.databinding.ActivityScreenAdapterBinding;
 

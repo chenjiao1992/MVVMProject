@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    所有需要更换主题时更改的颜色都必须在每个主题下创建一份才可以颜色更改,图片也是-->
+    <color name="theme_toolbar_title_green">#1afa29</color>
+    <color name="text_black_green">#1afa29</color>
+    <color name="theme_main_green">#516BA1</color>
+    <color name="main_green">#1afa29</color>
+    <color name="theme_color_c12_night">#E9E9E9</color>
+</resources>

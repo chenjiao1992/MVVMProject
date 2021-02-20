@@ -1,9 +1,8 @@
 package com.cj.node.activity
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import com.cj.library.base.BaseBindingActivity
+import com.cj.mvvmproject.BaseBindingActivity
 import com.cj.mvvmproject.R
 import com.cj.mvvmproject.databinding.ActivityNodeBinding
 import com.cj.node.WorkFlow

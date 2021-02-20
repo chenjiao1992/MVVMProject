@@ -19,13 +19,14 @@
         <item name="android:id">@id/toolbar</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">#ffffff</item>
+        <item name="android:background">@color/theme_main</item>
         <item name="android:theme">@style/WeChatToolbar.Menu</item>
         <item name="titleTextAppearance">@style/WeChatToolbarTitle</item>
         <item name="subtitleTextAppearance">@style/WeChatToolbarSubTitle</item>
         <item name="navigationIcon">@drawable/theme_btn_toolbar_back</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="toolbar_underLineColor">#E9E9E9</item>
+        <item name="menu_item_text_color">@color/theme_toolbar_title</item>
+        <item name="toolbar_underLineColor">@color/theme_color_c12</item>
     </style>
     <style name="WeChatToolbar.Menu"
         parent="Theme.AppCompat.Light">
@@ -34,13 +35,13 @@
 
 
     <style name="WeChatToolbarTitle">
-        <item name="android:textColor">#333</item>
+        <item name="android:textColor">@color/theme_toolbar_title</item>
         <item name="android:textSize">17sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="WeChatToolbarSubTitle">
-        <item name="android:textColor">#333</item>
+        <item name="android:textColor">@color/theme_toolbar_title</item>
         <item name="android:textSize">11sp</item>
     </style>
     <style name="OverflowMenuStyle"

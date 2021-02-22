@@ -107,14 +107,8 @@ dependencies {
     // 网络操作--有网络操作添加
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
    //刷新控件
-    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
-    implementation  'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
-    implementation  'com.scwang.smart:refresh-header-radar:2.0.1'       //雷达刷新头
-    implementation  'com.scwang.smart:refresh-header-falsify:2.0.1'     //虚拟刷新头
-    implementation  'com.scwang.smart:refresh-header-material:2.0.1'    //谷歌刷新头
-    implementation  'com.scwang.smart:refresh-header-two-level:2.0.1'   //二级刷新头
-    implementation  'com.scwang.smart:refresh-footer-ball:2.0.1'        //球脉冲加载
-    implementation  'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
+    implementation  'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'      //核心必须依赖
+
     //换肤
     implementation 'skin.support:skin-support:4.0.5'                   // skin-support
     implementation 'skin.support:skin-support-appcompat:4.0.5'         // skin-support 基础控件支持

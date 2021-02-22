@@ -4,10 +4,10 @@ import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cj.mvvmproject.BaseBindingActivity
 import com.cj.mvvmproject.R
+import com.cj.mvvmproject.SmartRefreshUtils
 import com.cj.mvvmproject.databinding.ActivityRecyclerviewBinding
 import com.cj.recyclerview.FunctionBean
 import com.cj.recyclerview.adapter.DemoAdapter
-import com.scwang.smart.refresh.header.ClassicsHeader
 
 /**
  *  Create by chenjiao at 2021/2/22 0022
@@ -18,13 +18,8 @@ class RecyclerViewActivity : BaseBindingActivity<ActivityRecyclerviewBinding>() 
 
     override fun onConfig(arguments: Intent?) {
         binding.rv.layoutManager = LinearLayoutManager(this)
-        binding.srl.setRefreshHeader(ClassicsHeader(this))
-        binding.srl.setOnRefreshListener {
-            binding.srl.finishRefresh(2000)
-        }
-        binding.srl.setOnLoadMoreListener {
-            binding.srl.finishLoadMore(2000)
-        }
+        val mSmartRefreshUtils = SmartRefreshUtils.with(binding.srl)
+        mSmartRefreshUtils.pureScrollMode()
         val mList = initData()
         val adapter = DemoAdapter(mList)
         binding.rv.adapter = adapter

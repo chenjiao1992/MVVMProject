@@ -19,14 +19,14 @@ class SkinActivity : BaseBindingActivity<ActivitySkinBinding>() {
     override fun onConfig(arguments: Intent?) {
         binding.onClick = View.OnClickListener {
             if (it.id == R.id.changeThemeGreen) {
-             var   themeName=  AccountManager.themeName
-                if(themeName=="green"){
+                var themeName = AccountManager.themeName
+                if (themeName == "green") {
                     SkinCompatManager.getInstance().restoreDefaultTheme()
-                    AccountManager.themeName=""
+                    AccountManager.themeName = ""
                     return@OnClickListener
                 }
                 SkinCompatManager.getInstance().loadSkin("green", SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN)
-                AccountManager.themeName="green"
+                AccountManager.themeName = "green"
             }
         }
     }

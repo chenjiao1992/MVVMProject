@@ -8,6 +8,7 @@ import com.cj.mvvmproject.databinding.ActivityMainBinding
 import com.cj.net.activity.NetDemoActivity
 import com.cj.node.activity.BubbleDemoActivity
 import com.cj.node.activity.NodeActivity
+import com.cj.recyclerview.activity.RecyclerViewActivity
 import com.cj.screen.activity.ScreenAdapterActivity
 import com.cj.skin.activity.SkinActivity
 import com.cj.video.activity.VideoCompressorActivity
@@ -32,6 +33,9 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                 }
                 R.id.ll_net -> {
                     startActivity(Intent(this, NetDemoActivity::class.java))
+                }
+                R.id.ll_list->{
+                    startActivity(Intent(this, RecyclerViewActivity::class.java))
                 }
             }
         }

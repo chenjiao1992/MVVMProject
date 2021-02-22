@@ -26,12 +26,6 @@
             app:popupTheme="@style/OverflowMenuStyle"
             app:title="换肤"/>
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/srl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srlEnablePureScrollMode="true">
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -274,7 +268,6 @@
                 </LinearLayout>
             </ScrollView>
 
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 
 </layout>

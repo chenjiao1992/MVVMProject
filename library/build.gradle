@@ -28,6 +28,14 @@ android {
         enabled = true
     }
 
+    sourceSets{
+        main{
+            java.srcDirs+=[
+                    'src/recyclerview/java'
+            ]
+        }
+    }
+
 }
 
 dependencies {
@@ -42,6 +50,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:2.1.0"
     implementation "com.fasterxml.jackson.core:jackson-databind:2.9.5"
     implementation "androidx.core:core-ktx:+"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

@@ -294,7 +294,17 @@
                             android:tint="@color/gray_light"/>
 
                     </LinearLayout>
-
+                    <TextView
+                        android:id="@+id/tv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="4.充值异常邮箱：chongzhi@sencent.com"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/text_content"/>
                 </LinearLayout>
             </ScrollView>
     </LinearLayout>

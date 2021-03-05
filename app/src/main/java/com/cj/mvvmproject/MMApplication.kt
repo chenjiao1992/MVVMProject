@@ -1,6 +1,5 @@
 package com.cj.mvvmproject
 
-import android.app.Application
 import android.content.pm.ApplicationInfo
 import com.cj.library.base.BaseApplicaton
 import com.cj.sdknet.NetInitHelper

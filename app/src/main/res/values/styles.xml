@@ -4,8 +4,10 @@
     <style name="AppTheme"
         parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-
+        <!-- 下面这行是讲启动白屏设置为透明 -->
+        <item name="android:windowIsTranslucent">true</item>
     </style>
+
     <style name="commomTextStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">30dp</item>
@@ -15,6 +17,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+
     <style name="WeChatToolbar">
         <item name="android:id">@id/toolbar</item>
         <item name="android:layout_width">match_parent</item>
@@ -28,6 +31,7 @@
         <item name="menu_item_text_color">@color/theme_toolbar_title</item>
         <item name="toolbar_underLineColor">@color/theme_color_c12</item>
     </style>
+
     <style name="WeChatToolbar.Menu"
         parent="Theme.AppCompat.Light">
         <item name="actionMenuTextColor">#333</item>
@@ -44,6 +48,7 @@
         <item name="android:textColor">@color/theme_toolbar_title</item>
         <item name="android:textSize">11sp</item>
     </style>
+
     <style name="OverflowMenuStyle"
         parent="@style/ThemeOverlay.AppCompat.Light">
         <!-- 是否覆盖锚点，默认为true，即盖住Toolbar -->

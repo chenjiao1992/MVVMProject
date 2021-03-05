@@ -1,6 +1,10 @@
 package com.cj.mvvmproject
 
 import android.content.Intent
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -17,6 +21,13 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun onConfig(arguments: Intent?) {
+        val spannableString = SpannableString("4.充值异常邮箱：chongzhi@sencent.com")
+        val spannableString1 = SpannableString("充值异常邮箱")
+        val length = spannableString.length
+        val length1 = spannableString1.length
+        val foregroundColorSpan = ForegroundColorSpan(Color.parseColor("#12D1BE"))
+        spannableString1.setSpan(foregroundColorSpan, length1 - 2, length1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+        binding.tv4.text = spannableString1
         binding.onClick = View.OnClickListener {
             when (it.id) {
                 R.id.ll_bobbleView ->
@@ -29,12 +40,12 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                     startActivity(Intent(this, VideoCompressorActivity::class.java))
                 }
                 R.id.ll_skin -> {
-                     startActivity(Intent(this, SkinActivity::class.java))
+                    startActivity(Intent(this, SkinActivity::class.java))
                 }
                 R.id.ll_net -> {
                     startActivity(Intent(this, NetDemoActivity::class.java))
                 }
-                R.id.ll_list->{
+                R.id.ll_list -> {
                     startActivity(Intent(this, RecyclerViewActivity::class.java))
                 }
             }
@@ -65,7 +76,5 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         }
         return super.onToolbarMenuItemClick(menuItem)
     }
-
-
 
 }

@@ -1,9 +1,8 @@
-package com.cj.mvvmproject
+package com.cj.mvvmproject.calculate
 
 import android.view.View
 import android.view.ViewGroup
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  *  Create by chenjiao at 2021/3/5 0005

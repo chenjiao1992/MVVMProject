@@ -8,6 +8,9 @@ import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.cj.mvvmproject.annotaion.AnotationDemo
+import com.cj.mvvmproject.annotaion.CustomTag
+import com.cj.mvvmproject.annotaion.CustonTagAnotationManager
 import com.cj.mvvmproject.databinding.ActivityMainBinding
 import com.cj.net.activity.NetDemoActivity
 import com.cj.node.activity.BubbleDemoActivity
@@ -53,7 +56,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     }
 
     override fun onPrepared() {
-
+        CustonTagAnotationManager.process(AnotationDemo::class.java.name)
     }
 
     override fun onToolbarMenuItemClick(menuItem: MenuItem): Boolean {

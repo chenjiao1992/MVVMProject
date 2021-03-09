@@ -1,4 +1,4 @@
-package com.cj.mvvmproject;
+package com.cj.mvvmproject.sigleinstance;
 
 /**
  Create by chenjiao at 2021/3/5 0005

@@ -1,4 +1,4 @@
-package com.itcast.play.ui.view;
+package com.cj.mvvmproject.view;
 
 import java.util.ArrayList;
 

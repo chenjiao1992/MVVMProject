@@ -1,7 +1,5 @@
 package com.cj.mvvmproject.annotaion;
 
-import android.util.Log;
-
 import java.lang.reflect.Method;
 
 /**

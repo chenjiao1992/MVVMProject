@@ -31,25 +31,25 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         val foregroundColorSpan = ForegroundColorSpan(Color.parseColor("#12D1BE"))
         spannableString1.setSpan(foregroundColorSpan, length1 - 2, length1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
         binding.tv4.text = spannableString1
-        binding.onClick = View.OnClickListener {
-            when (it.id) {
+        binding.onClick = View.OnClickListener { p0 ->
+            when (p0?.id) {
                 R.id.ll_bobbleView ->
-                    startActivity(Intent(this, BubbleDemoActivity::class.java))
+                    startActivity(Intent(this@MainActivity, BubbleDemoActivity::class.java))
                 R.id.ll_node ->
-                    startActivity(Intent(this, NodeActivity::class.java))
+                    startActivity(Intent(this@MainActivity, NodeActivity::class.java))
                 R.id.ll_screen ->
-                    startActivity(Intent(this, ScreenAdapterActivity::class.java))
+                    startActivity(Intent(this@MainActivity, ScreenAdapterActivity::class.java))
                 R.id.ll_video -> {
-                    startActivity(Intent(this, VideoCompressorActivity::class.java))
+                    startActivity(Intent(this@MainActivity, VideoCompressorActivity::class.java))
                 }
                 R.id.ll_skin -> {
-                    startActivity(Intent(this, SkinActivity::class.java))
+                    startActivity(Intent(this@MainActivity, SkinActivity::class.java))
                 }
                 R.id.ll_net -> {
-                    startActivity(Intent(this, NetDemoActivity::class.java))
+                    startActivity(Intent(this@MainActivity, NetDemoActivity::class.java))
                 }
                 R.id.ll_list -> {
-                    startActivity(Intent(this, RecyclerViewActivity::class.java))
+                    startActivity(Intent(this@MainActivity, RecyclerViewActivity::class.java))
                 }
             }
         }

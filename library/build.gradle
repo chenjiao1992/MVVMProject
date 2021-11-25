@@ -8,8 +8,8 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion 17
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -49,7 +49,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.1.0"
     implementation "androidx.lifecycle:lifecycle-livedata:2.1.0"
     implementation "com.fasterxml.jackson.core:jackson-databind:2.9.5"
-    implementation "androidx.core:core-ktx:+"
+  //  implementation "androidx.core:core-ktx:+"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
 
     //kotlin

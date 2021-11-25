@@ -32,6 +32,7 @@ class VideoCompressorActivity : BaseBindingActivity<ActivityVideoCompressorBindi
     private var endTime: Long = 0
     private val outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
         .absolutePath
+
     override fun getLayoutId() = R.layout.activity_video_compressor
 
     private fun getLocale(): Locale? {
@@ -55,7 +56,7 @@ class VideoCompressorActivity : BaseBindingActivity<ActivityVideoCompressorBindi
     }
 
     override fun onConfig(arguments: Intent?) {
-        binding.btnSelect.setOnClickListener(View.OnClickListener { addLoacalVideo() })
+        binding.btnSelect.setOnClickListener { addLoacalVideo() }
         binding.btnCompress.setOnClickListener {
             destPath = tv_output.getText().toString() + File.separator + "out_VID_" + SimpleDateFormat("yyyyMMdd_HHmmss", getLocale())
                 .format(Date()) + ".mp4"
@@ -119,7 +120,7 @@ class VideoCompressorActivity : BaseBindingActivity<ActivityVideoCompressorBindi
             intentvideo.type = "video/*"
         }
         startActivityForResult(Intent.createChooser(intentvideo, "选择要导入的视频"),
-                REQUEST_FOR_VIDEO_FILE)
+            REQUEST_FOR_VIDEO_FILE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -131,7 +132,7 @@ class VideoCompressorActivity : BaseBindingActivity<ActivityVideoCompressorBindi
                 try {
                     inputPath = Util.getFilePath(this, data.data)
                     binding.tvInput.setText(inputPath)
-                    Log.d("xxx","inputPath=$inputPath")
+                    Log.d("xxx", "inputPath=$inputPath")
                 } catch (e: URISyntaxException) {
                     e.printStackTrace()
                 }

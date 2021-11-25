@@ -17,8 +17,8 @@ class SkinActivity : BaseBindingActivity<ActivitySkinBinding>() {
     override fun getLayoutId() = R.layout.activity_skin
 
     override fun onConfig(arguments: Intent?) {
-        binding.onClick = View.OnClickListener {
-            if (it.id == R.id.changeThemeGreen) {
+        binding.onClick = View.OnClickListener { p0 ->
+            if (p0?.id == R.id.changeThemeGreen) {
                 var themeName = AccountManager.themeName
                 if (themeName == "green") {
                     SkinCompatManager.getInstance().restoreDefaultTheme()

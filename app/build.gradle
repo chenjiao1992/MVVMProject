@@ -48,7 +48,7 @@ android {
 
     //每个业务都单独放
     sourceSets {
-        //第一种方法:每次都需要手动添加
+        //第一种方式:每新建一个单独业务文件夹都需要手动添加
 //        main {
 //            assets.srcDirs += [
 //                    'src/business/bubble/assets'
@@ -77,15 +77,13 @@ android {
 //            ]
 //        }
 
-        //第二种方法 ,每次新增业务文件夹,同步一下就会自动添加
+        //第二种:同步一下就可添加
         main {
-//            proto {
-//                srcDir 'src/business/chat/proto'  //proto文件用来定义数据结构
-//            }
             def assetsPaths = []
             def javaPaths = []
             def resPaths = []
-            traversalSourceSet('business', assetsPaths, javaPaths, resPaths) //每一行分别对应app目录下src的每个文件夹,需要在src下的哪个文件夹增加业务单独文件夹就写这行
+            //每一行分别对应app目录下src的每个文件夹,需要在src下的哪个文件夹增加业务单独文件夹就写这行
+            traversalSourceSet('business', assetsPaths, javaPaths, resPaths)
             assets.srcDirs += assetsPaths
             java.srcDirs += javaPaths
             res.srcDirs += resPaths
@@ -95,6 +93,52 @@ android {
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+}
+
+
+
+def traversalSourceSet(String mainDirname, List assetsPaths, List javaPaths, List resPaths) {
+    def mainDir = new File(projectDir, 'src/' + mainDirname)
+    if (!mainDir.exists() || !mainDir.isDirectory()) return
+    mainDir.eachFile { primaryDirFile ->
+        traversalSourceSetPrimary(mainDirname, primaryDirFile, assetsPaths, javaPaths, resPaths)
+    }
+}
+
+static def traversalSourceSetPrimary(String mainDirname, File primaryDirFile, List assetsPaths, List javaPaths, List resPaths) {
+    if (!primaryDirFile.isDirectory()) return
+    def primaryDirname = primaryDirFile.name
+    primaryDirFile.eachFile { secondaryDirFile ->
+        if (secondaryDirFile.isDirectory()) {
+            def secondaryDirname = secondaryDirFile.name
+            if (secondaryDirname == 'assets') {
+                assetsPaths << 'src/' + mainDirname + '/' + primaryDirname + '/assets'
+            } else if (secondaryDirname == 'java') {
+                javaPaths << 'src/' + mainDirname + '/' + primaryDirname + '/java'
+            } else if (secondaryDirname == 'res') {
+                resPaths << 'src/' + mainDirname + '/' + primaryDirname + '/res'
+            } else {
+                traversalSourceSetSecondary(mainDirname, primaryDirname, secondaryDirFile, assetsPaths, javaPaths, resPaths)
+            }
+        }
+    }
+}
+
+static def traversalSourceSetSecondary(String mainDirname, String primaryDirname, File secondaryDirFile, List assetsPaths, List javaPaths, List resPaths) {
+    if (!secondaryDirFile.isDirectory()) return
+    def secondaryDirname = secondaryDirFile.name
+    secondaryDirFile.eachFile { tertiaryDirFile ->
+        if (tertiaryDirFile.isDirectory()) {
+            def tertiaryDirname = tertiaryDirFile.name
+            if (tertiaryDirname == 'assets') {
+                assetsPaths << 'src/' + mainDirname + '/' + primaryDirname + '/' + secondaryDirname + '/assets'
+            } else if (tertiaryDirname == 'java') {
+                javaPaths << 'src/' + mainDirname + '/' + primaryDirname + '/' + secondaryDirname + '/java'
+            } else if (tertiaryDirname == 'res') {
+                resPaths << 'src/' + mainDirname + '/' + primaryDirname + '/' + secondaryDirname + '/res'
+            }
         }
     }
 }
@@ -127,7 +171,7 @@ dependencies {
     implementation 'com.facebook.stetho:stetho:1.5.1'
     // 网络操作--有网络操作添加
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
-   //刷新控件
+    //刷新控件
     implementation  'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'      //核心必须依赖
 
     //换肤

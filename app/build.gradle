@@ -48,32 +48,47 @@ android {
 
     //每个业务都单独放
     sourceSets {
+        //第一种方法:每次都需要手动添加
+//        main {
+//            assets.srcDirs += [
+//                    'src/business/bubble/assets'
+//            ]
+//            java.srcDirs += [
+//                    'src/business/bubble/java'
+//                    , 'src/business/node/java'
+//                    , 'src/business/screen/java'
+//                    , 'src/business/skin/java'
+//                    , 'src/business/video/java'
+//                    , 'src/business/net/java'
+//                    , 'src/business/recyclerview/java'
+//            ]
+//
+//            res.srcDirs += [
+//                    'src/business/bubble/res'
+//                    , 'src/business/node/res'
+//                    , 'src/business/screen/res'
+//                    , 'src/business/skin/res'
+//                    , 'src/business/theme/green/res'
+//                    , 'src/business/theme/red/res'
+//                    , 'src/business/video/res'
+//                    , 'src/business/net/res'
+//                    , 'src/business/recyclerview/res'
+//
+//            ]
+//        }
+
+        //第二种方法 ,每次新增业务文件夹,同步一下就会自动添加
         main {
-            assets.srcDirs += [
-                    'src/business/bubble/assets'
-            ]
-            java.srcDirs += [
-                    'src/business/bubble/java'
-                    , 'src/business/node/java'
-                    , 'src/business/screen/java'
-                    , 'src/business/skin/java'
-                    , 'src/business/video/java'
-                    , 'src/business/net/java'
-                    , 'src/business/recyclerview/java'
-            ]
-
-            res.srcDirs += [
-                    'src/business/bubble/res'
-                    , 'src/business/node/res'
-                    , 'src/business/screen/res'
-                    , 'src/business/skin/res'
-                    , 'src/business/theme/green/res'
-                    , 'src/business/theme/red/res'
-                    , 'src/business/video/res'
-                    , 'src/business/net/res'
-                    , 'src/business/recyclerview/res'
-
-            ]
+//            proto {
+//                srcDir 'src/business/chat/proto'  //proto文件用来定义数据结构
+//            }
+            def assetsPaths = []
+            def javaPaths = []
+            def resPaths = []
+            traversalSourceSet('business', assetsPaths, javaPaths, resPaths) //每一行分别对应app目录下src的每个文件夹,需要在src下的哪个文件夹增加业务单独文件夹就写这行
+            assets.srcDirs += assetsPaths
+            java.srcDirs += javaPaths
+            res.srcDirs += resPaths
         }
     }
     compileOptions {

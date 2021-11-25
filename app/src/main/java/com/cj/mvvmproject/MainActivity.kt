@@ -24,13 +24,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun onConfig(arguments: Intent?) {
-        val spannableString = SpannableString("4.充值异常邮箱：chongzhi@sencent.com")
-        val spannableString1 = SpannableString("充值异常邮箱")
-        val length = spannableString.length
-        val length1 = spannableString1.length
-        val foregroundColorSpan = ForegroundColorSpan(Color.parseColor("#12D1BE"))
-        spannableString1.setSpan(foregroundColorSpan, length1 - 2, length1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
-        binding.tv4.text = spannableString1
         binding.onClick = View.OnClickListener { p0 ->
             when (p0?.id) {
                 R.id.ll_bobbleView ->
@@ -50,6 +43,8 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                 }
                 R.id.ll_list -> {
                     startActivity(Intent(this@MainActivity, RecyclerViewActivity::class.java))
+                }
+                R.id.ll_conversation -> {
                 }
             }
         }

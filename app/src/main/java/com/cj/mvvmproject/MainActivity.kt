@@ -20,9 +20,7 @@ import com.cj.screen.activity.ScreenAdapterActivity
 import com.cj.skin.activity.SkinActivity
 import com.cj.video.activity.VideoCompressorActivity
 
-class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
-    override fun getLayoutId(): Int = R.layout.activity_main
-
+class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onConfig(arguments: Intent?) {
         binding.onClick = View.OnClickListener { p0 ->
             when (p0?.id) {
@@ -45,6 +43,9 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                     startActivity(Intent(this@MainActivity, RecyclerViewActivity::class.java))
                 }
                 R.id.ll_conversation -> {
+                }
+                R.id.llThread -> {
+                    startActivity(Intent(this@MainActivity, ThreadDemoActivity::class.java))
                 }
             }
         }

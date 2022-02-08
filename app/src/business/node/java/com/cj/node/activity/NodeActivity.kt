@@ -12,7 +12,7 @@ import com.cj.node.WorkNode
  * Create by chenjiao
  * 描述:在app中经常需要我们在做完一件事之后再做另一件事,过后又需要在前面两件事中间再插入一件,按以前的方法插入就需要前两件事情的先后逻辑,如果很麻烦,所以有了WorkFlow,用来管理整个流程
  */
-class NodeActivity : BaseBindingActivity<ActivityNodeBinding>() {
+class NodeActivity : BaseBindingActivity<ActivityNodeBinding>(R.layout.activity_node) {
     private var mWorkFlow: WorkFlow? = null
 
     private fun startWorkFlow() {
@@ -41,7 +41,6 @@ class NodeActivity : BaseBindingActivity<ActivityNodeBinding>() {
         private const val NODE_THIRD_ID = 3
     }
 
-    override fun getLayoutId()=R.layout.activity_node
 
     override fun onConfig(arguments: Intent?) {
         startWorkFlow()

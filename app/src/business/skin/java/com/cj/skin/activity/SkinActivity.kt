@@ -1,6 +1,5 @@
 package com.cj.skin.activity
 
-import android.accounts.Account
 import android.content.Intent
 import android.view.View
 import com.cj.mvvmproject.AccountManager
@@ -13,8 +12,7 @@ import skin.support.SkinCompatManager
  *  Create by chenjiao at 2021/2/19 0019
  *  描述：换肤页面
  */
-class SkinActivity : BaseBindingActivity<ActivitySkinBinding>() {
-    override fun getLayoutId() = R.layout.activity_skin
+class SkinActivity : BaseBindingActivity<ActivitySkinBinding>(R.layout.activity_skin) {
 
     override fun onConfig(arguments: Intent?) {
         binding.onClick = View.OnClickListener { p0 ->

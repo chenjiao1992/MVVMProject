@@ -25,7 +25,7 @@ import java.util.*
  *  Create by chenjiao at 2020/5/6 0006
  *  描述：
  */
-class VideoCompressorActivity : BaseBindingActivity<ActivityVideoCompressorBinding>() {
+class VideoCompressorActivity : BaseBindingActivity<ActivityVideoCompressorBinding>(R.layout.activity_video_compressor) {
     private var inputPath: String? = null
     var destPath = ""
     private var startTime: Long = 0
@@ -33,7 +33,6 @@ class VideoCompressorActivity : BaseBindingActivity<ActivityVideoCompressorBindi
     private val outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
         .absolutePath
 
-    override fun getLayoutId() = R.layout.activity_video_compressor
 
     private fun getLocale(): Locale? {
         val config = resources.configuration

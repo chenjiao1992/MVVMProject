@@ -1,6 +1,7 @@
 package com.cj.mvvmproject
 
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.cj.library.base.BaseActivity
@@ -12,13 +13,13 @@ import skin.support.observe.SkinObservable
  *  Create by chenjiao at 2019/12/13 0013
  *  描述：
  */
-abstract class BaseBindingActivity<BINDING : ViewDataBinding> : BaseHandlePermissionActivity() {
+abstract class BaseBindingActivity<BINDING : ViewDataBinding>(@LayoutRes var layoutId:Int) : BaseHandlePermissionActivity() {
     protected lateinit var binding: BINDING
+
     override fun doInflate(activity: BaseActivity, savedInstanceState: Bundle?) {
-        binding = DataBindingUtil.setContentView(activity, getLayoutId())
+        binding = DataBindingUtil.setContentView(activity, layoutId)
     }
 
-    abstract fun getLayoutId(): Int
 
     override fun onDestroy() {
         if (::binding.isInitialized) {

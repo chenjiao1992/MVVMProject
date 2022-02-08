@@ -13,8 +13,7 @@ import com.cj.recyclerview.adapter.DemoAdapter
  *  Create by chenjiao at 2021/2/22 0022
  *  描述：
  */
-class RecyclerViewActivity : BaseBindingActivity<ActivityRecyclerviewBinding>() {
-    override fun getLayoutId() = R.layout.activity_recyclerview
+class RecyclerViewActivity : BaseBindingActivity<ActivityRecyclerviewBinding>(R.layout.activity_recyclerview) {
 
     override fun onConfig(arguments: Intent?) {
         binding.rv.layoutManager = LinearLayoutManager(this)

@@ -8,7 +8,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MVVMProject/app/src/business/screen/res/layout/activity_screen_adapter.xml" value="0.2890625" />
         <entry key="..\:/MVVMProject/app/src/main/res/layout/activity_main.xml" value="0.10572916666666667" />
+        <entry key="..\:/MVVMProject/app/src/main/res/layout/activity_thread_demo.xml" value="0.2111111111111111" />
       </map>
     </option>
   </component>

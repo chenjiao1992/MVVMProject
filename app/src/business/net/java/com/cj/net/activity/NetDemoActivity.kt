@@ -17,8 +17,7 @@ import com.cj.sdknet.net.callback.APISubscriber
  */
 
 
-class NetDemoActivity : BaseBindingActivity<ActivityNetDemoBinding>() {
-    override fun getLayoutId(): Int = R.layout.activity_net_demo
+class NetDemoActivity : BaseBindingActivity<ActivityNetDemoBinding>(R.layout.activity_net_demo) {
 
     override fun onConfig(arguments: Intent?) {
         ServiceGenerator.generateService(MainApi::class.java)?.getProvices("http://guolin.tech")

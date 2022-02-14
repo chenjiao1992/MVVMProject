@@ -1,15 +1,14 @@
 package com.cj.mvvmproject
 
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
+import android.content.ServiceConnection
+import android.os.IBinder
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.cj.mvvmproject.annotaion.AnotationDemo
-import com.cj.mvvmproject.annotaion.CustomTag
 import com.cj.mvvmproject.annotaion.CustonTagAnotationManager
 import com.cj.mvvmproject.databinding.ActivityMainBinding
 import com.cj.net.activity.NetDemoActivity
@@ -19,6 +18,8 @@ import com.cj.recyclerview.activity.RecyclerViewActivity
 import com.cj.screen.activity.ScreenAdapterActivity
 import com.cj.skin.activity.SkinActivity
 import com.cj.video.activity.VideoCompressorActivity
+import com.sencent.dm.IRoomBeanAIDL
+import com.sencent.dm.RoomBean
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onConfig(arguments: Intent?) {
@@ -43,6 +44,9 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
                     startActivity(Intent(this@MainActivity, RecyclerViewActivity::class.java))
                 }
                 R.id.ll_conversation -> {
+                    val roomBean = RoomBean()
+                    roomBean.name="肖战小店"
+                    aidl?.addRoomBean(roomBean)
                 }
                 R.id.llThread -> {
                     startActivity(Intent(this@MainActivity, ThreadDemoActivity::class.java))
@@ -51,8 +55,23 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(R.layout.activity_
         }
     }
 
+    private var aidl: IRoomBeanAIDL? = null
+    private val conn = object : ServiceConnection {
+        override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {
+            aidl = IRoomBeanAIDL.Stub.asInterface(p1)
+        }
+
+        override fun onServiceDisconnected(p0: ComponentName?) {
+            aidl = null
+        }
+
+    }
+
     override fun onPrepared() {
         CustonTagAnotationManager.process(AnotationDemo::class.java.name)
+        val intent = Intent()
+        intent.component = ComponentName("com.sencent.dm", "com.sencent.dm.service.RoomService")
+        bindService(intent, conn, Context.BIND_AUTO_CREATE)
     }
 
     override fun onToolbarMenuItemClick(menuItem: MenuItem): Boolean {

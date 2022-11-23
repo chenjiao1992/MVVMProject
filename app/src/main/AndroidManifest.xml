@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cj.mvvmproject">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".MMApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".MMApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,20 +22,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="design_width_in_dp"
-            android:value="375"/>
+            android:value="375" />
         <meta-data
             android:name="design_height_in_dp"
-            android:value="667"/>
-        <activity android:name="com.cj.screen.activity.ScreenAdapterActivity"/>
-        <activity android:name="com.cj.node.activity.BubbleDemoActivity"/>
-        <activity android:name="com.cj.node.activity.NodeActivity"/>
-        <activity android:name="com.cj.video.activity.VideoActivity"/>
-        <activity android:name="com.cj.video.activity.VideoCompressorActivity"/>
-        <activity android:name="com.cj.net.activity.NetDemoActivity"/>
-        <activity android:name="com.cj.skin.activity.SkinActivity"/>
-        <activity android:name="com.cj.recyclerview.activity.RecyclerViewActivity"/>
+            android:value="667" />
+
+        <activity android:name="com.cj.screen.activity.ScreenAdapterActivity" />
+        <activity android:name="com.cj.node.activity.BubbleDemoActivity" />
+        <activity android:name="com.cj.node.activity.NodeActivity" />
+        <activity android:name="com.cj.video.activity.VideoActivity" />
+        <activity android:name="com.cj.video.activity.VideoCompressorActivity" />
+        <activity android:name="com.cj.net.activity.NetDemoActivity" />
+        <activity android:name="com.cj.skin.activity.SkinActivity" />
+        <activity android:name="com.cj.recyclerview.activity.RecyclerViewActivity" />
+        <activity android:name="com.cj.kotlin_flow.avtivity.FlowDemoActivity" />
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.cj.kotlin_flow.avtivity.FlowDemoActivity
 import com.cj.mvvmproject.annotaion.AnotationDemo
 import com.cj.mvvmproject.annotaion.CustomTag
 import com.cj.mvvmproject.annotaion.CustonTagAnotationManager
@@ -29,7 +30,12 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         val length = spannableString.length
         val length1 = spannableString1.length
         val foregroundColorSpan = ForegroundColorSpan(Color.parseColor("#12D1BE"))
-        spannableString1.setSpan(foregroundColorSpan, length1 - 2, length1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+        spannableString1.setSpan(
+            foregroundColorSpan,
+            length1 - 2,
+            length1,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
         binding.tv4.text = spannableString1
         binding.onClick = View.OnClickListener {
             when (it.id) {
@@ -50,6 +56,9 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                 }
                 R.id.ll_list -> {
                     startActivity(Intent(this, RecyclerViewActivity::class.java))
+                }
+                R.id.ll_flow -> {
+                    startActivity(Intent(this, FlowDemoActivity::class.java))
                 }
             }
         }

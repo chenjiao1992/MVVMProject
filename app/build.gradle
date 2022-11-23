@@ -55,6 +55,7 @@ android {
             java.srcDirs += [
                     'src/business/bubble/java'
                     , 'src/business/node/java'
+                    , 'src/business/kotlin_flow/java'
                     , 'src/business/screen/java'
                     , 'src/business/skin/java'
                     , 'src/business/video/java'
@@ -65,6 +66,7 @@ android {
             res.srcDirs += [
                     'src/business/bubble/res'
                     , 'src/business/node/res'
+                    , 'src/business/kotlin_flow/res'
                     , 'src/business/screen/res'
                     , 'src/business/skin/res'
                     , 'src/business/theme/green/res'

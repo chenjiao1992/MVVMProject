@@ -105,6 +105,25 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
                 }
                 println(result3) //通过fold可以实现字符串的拼接
             }
+
+            //下面开始难的操作符,从3种以flatMap开头的操作符函数，
+            // 分别是flatMapConcat、flatMapMerge和flatMapLatest,现在开始是两个flow进行操作
+            runBlocking {
+                flowOf("张", "李", "王", "赵", "朱") //首先这几个字符串会依次发送
+                    .flatMapConcat {//flatMapConcat的应用场景:一个接口A请求参数来自于另一个接口B的结果,只需要将获取参数的接口B当第一个flow,接口A当flatMapConcat的应用场景内的flow,这样第一个flow接口拿到结果后参与第二个flow的发送数据,第二个接口得到的数据在collect中收集
+                        flowOf(
+                            it + 3,
+                            it + 4,
+                            it + 5,
+                            it + 6,
+                            it + 7
+                        ) //这个flow也会依次发送与第一个flow拼接后的带数字的字符串,it就是来自第一个flow依次发送的字符串
+                    }.collect {
+                        //最终结果就是第一个flow中的字符串依次与第二个flow的所有值进行拼接,最终等得到值数量是两个flow的个数相乘后的结果
+                        println(it)
+
+                    }
+            }
         }
     }
 }

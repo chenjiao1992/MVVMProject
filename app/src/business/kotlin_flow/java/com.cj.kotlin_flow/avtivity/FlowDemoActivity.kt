@@ -175,7 +175,20 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
                         emit("$it")
                     }
                 }.collect {
-                        println(it) //结果1,3
+                    println(it) //结果1,3
+                }
+            }
+            println("--------zip操作符--------")
+            //跟flatMap有点类似,zip函数也是作用在两个flow上,但是flatMap是一个flow中的数据流向另一个flow,而zip是平行的运行关系
+            //zip适用场景:页面的显示数据由两个接口返回后组合在一起显示在页面上,如果一个接口请求完再去请求第二个接口,效率太慢,就可以使用zip,两个接口并行请求,然后组合两个接口的结果,最后在collect中获取组合后的结果
+            runBlocking {
+                val flow1 = flowOf("a", "b", "c")
+                val flow2 = flowOf(1, 2, 3, 4, 5)
+                flow1.zip(flow2) { s: String, i: Int ->//两个flow并行发射,并组合在一起,s和i分别对应两个flow中的值
+                    s + i
+                }
+                    .collect {//两个flow中发射的数据长度不一样,那么zip函数的规则是，只要其中一个flow中的数据全部处理结束就会终止运行，剩余未处理的数据将不会得到处理。因此，flow2中的4和5这两个数据会被舍弃掉。
+                        println(it)//结果 a1,b2,c3
                     }
             }
         }

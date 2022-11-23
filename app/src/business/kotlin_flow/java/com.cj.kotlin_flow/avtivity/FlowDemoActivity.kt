@@ -46,6 +46,7 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
         //5. 執行測試就 OK了
         @JvmStatic
         fun main(args: Array<String>) {
+            println("--------filter,onEach,map,debounce简单操作符--------")
             //简单操作符
             runBlocking {
                 val flow = flowOf(1, 2, 3, 4, 5, 6)
@@ -61,6 +62,7 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
                         println(it)
                     }
             }
+            println("--------debounce和sample操作符--------")
             //复杂一点的操作符
             runBlocking {
                 val flow = flow<Int> {
@@ -78,6 +80,7 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
                         println(it)
                     }
             }
+            println("--------reduce和fold操作符--------")
             //前面几个操作符都是最终需要collect函数来收集结果,下面的操作符不需要借助collect函数,自己就可以终结flow流程
             runBlocking {
                 val flow = flow<Int> {
@@ -105,9 +108,10 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
                 }
                 println(result3) //通过fold可以实现字符串的拼接
             }
-
+            println("--------flatMapConcat操作符--------")
             //下面开始难的操作符,从3种以flatMap开头的操作符函数，
             // 分别是flatMapConcat、flatMapMerge和flatMapLatest,现在开始是两个flow进行操作
+            //1.flatMapConcat
             runBlocking {
                 flowOf("张", "李", "王", "赵", "朱") //首先这几个字符串会依次发送
                     .flatMapConcat {//flatMapConcat的应用场景:一个接口A请求参数来自于另一个接口B的结果,只需要将获取参数的接口B当第一个flow,接口A当flatMapConcat的应用场景内的flow,这样第一个flow接口拿到结果后参与第二个flow的发送数据,第二个接口得到的数据在collect中收集
@@ -122,6 +126,56 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
                         //最终结果就是第一个flow中的字符串依次与第二个flow的所有值进行拼接,最终等得到值数量是两个flow的个数相乘后的结果
                         println(it)
 
+                    }
+            }
+            println("--------flatMapConcat操作符--------")
+            runBlocking {
+                flowOf(300L, 200L, 100L) //首先这几个字符串会依次发送
+                    .flatMapConcat {
+                        flow {
+                            delay(it)
+                            emit("a$it")
+                            emit("b$it")
+                        }
+                    }.collect {
+                        //最终结果就串行,与第一个flow依次发送的顺序一致,当发送第一个数据300时,到了第二个flow那里虽然先延迟300L,但是并不打乱顺序
+                        println(it)
+
+                    }
+            }
+            println("--------flatMapMerge操作符--------")
+            //2.flatMapMerge与flatMapConcat效果表面上看起来是一样的,但是flatMapConcat能保证顺序,而flatMapMerge是并发来处理数据,所以并不能保证顺序
+            runBlocking {
+                flowOf(300L, 200L, 100L) //首先这几个字符串会依次发送
+                    .flatMapMerge {//flatMapMerge的应用场景:
+                        flow {
+                            delay(it)
+                            emit("a$it")
+                            emit("b$it")
+                        } //这个flow也会依次发送与第一个flow拼接后的带数字的字符串,it就是来自第一个flow依次发送的字符串
+                    }.collect {
+                        //最终结果就是并行,当发送第一个数据300时,到了第二个flow那里虽然先延迟300L,接着发送第二个数据200,到了第二个flow那里先延迟200L,最后发射第三个数据100L,因为只用延迟100L,所以第三个数据100会先与第二个flow的每个数据去组合输出
+                        println(it)
+
+                    }
+            }
+            println("--------flatMapLatest操作符--------")
+            //与flatMapMerge与flatMapConcat效果类似,但是flatMapLatest处理最新的，flow1中的数据传递到flow2中会立刻进行处理，但如果flow1中的下一个数据要发送了，而flow2中上一个数据还没处理完，则会直接将剩余逻辑取消掉，开始处理最新的数据。
+            runBlocking {
+                flow {
+                    emit(1)
+                    delay(150)
+                    emit(2)
+                    delay(50)
+                    emit(3)
+                }.flatMapLatest {
+                    flow {//1发送到第二个flow时,需要处理100L,2发送过来时中间间隔150l,而1在这里处理只需要耗时100,所以2过来是1肯定处理完了,所以1会打印,
+                        // 3与2的发射时间只间隔50毫秒,而2在这里需要100毫秒的时间处理,所以3发射过来时,这时的2还没处理完,那么2就会终止,直接处理3,所以结果就是1和3
+                        delay(100)
+                        emit("$it")
+                    }
+                }.collect {
+                        println(it) //结果1,3
                     }
             }
         }

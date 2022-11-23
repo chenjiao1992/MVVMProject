@@ -15,12 +15,12 @@ android {
             keyPassword 'xifan520'
         }
     }
-    compileSdkVersion 29
+    compileSdkVersion 31
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.cj.mvvmproject"
         minSdkVersion 24
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -115,6 +115,14 @@ dependencies {
     implementation 'skin.support:skin-support-design:4.0.5'            // skin-support-design material design 控件支持[可选]
     implementation 'skin.support:skin-support-cardview:4.0.5'          // skin-support-cardview CardView 控件支持[可选]
     implementation 'skin.support:skin-support-constraint-layout:4.0.5' // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
+   //协程
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    //提供协程作用域的
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    //ktx的扩展库
+    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.3"
 }
 
 repositories {

@@ -191,6 +191,80 @@ class FlowDemoActivity : BaseBindingActivity<ActivityFlowDemoBinding>() {
                         println(it)//结果 a1,b2,c3
                     }
             }
+            println("--------buffer与conflate操作符--------")
+            //buffer,conflate,collectLatest都是用于处理flow背压问题.背压指上游发送数据速度与下游处理数据速度不一致造成的压力问题
+            //buffer 当Flow上游发送数据速度与下游处理数据的速度不匹配时候,buffer会
+            //先看看没使用buffer,conflate,collectLatest时,当上下游速度不一样引发的问题:
+            runBlocking {
+                flow { //flow上游每条数据发送间隔是1秒
+                    emit(1)
+                    delay(1000L)
+                    emit(2)
+                    delay(1000L)
+                    emit(3)
+                }.onEach {
+                    println("$it is ready")
+                }.collect { //下游处理每条数据需要耗时1秒
+                    delay(1000L)
+                    println("$it is handled")
+                    //打印结果:1 is ready 1 is handled 2 is ready 2 is handled 3 is ready 3 is handled
+                    //每条数据需要耗时2秒,因为发送需要1秒,处理需要1秒.因为默认情况下,collect和flow函数都是运行在同一个协程中,
+                    //因此,如果collect函数中的代码没有执行完,flow函数中的代码也会被挂起等待.也就是说我们如果在collect函数中处
+                    // 理数据需要1秒,flow函数就同样需要等待1秒,collect函数处理完后,flow函数恢复运行,发现flow函数中又需要等待1秒,这样2秒钟才能发送下一条数据
+
+                }
+
+            }
+            println("--------buffer操作符--------")
+            runBlocking {
+                flow { //flow上游每条数据发送间隔是1秒
+                    emit(1)
+                    delay(1000L)
+                    emit(2)
+                    delay(1000L)
+                    emit(3)
+                }.onEach {
+                    println("$it is ready")
+                }.buffer()
+                    .collect { //下游处理每条数据需要耗时1秒
+                        delay(1000L)
+                        println("$it is handled")//结果:1 is ready 2 is ready1 is handled 3 is ready 2 is handled 3 is handled
+                        //结果是乱的,才是正常的,因为有buffer的存在,数据发送和数据处理之间变的互不干扰了
+                        //buffer函数其实就是一种背压的处理策略,它提供了一份缓存区,当flow数据流速不均匀的时候,使用这份缓存区来保证程序运行效率
+                        //flow函数只管发送自己的数据,它不需要关心数据有没有被处理,反正都缓存在buffer当中,而collect函数也只需要一直从buffer中获取数据来进行处理就可以了.
+                        //但当流速不均匀问题持续放大,缓存区的内容越来越多时又该如果处理呢?这个时候需要引入conflate来适当的丢弃一些数据
+                    }
+            }
+
+            println("--------conflate操作符--------")
+            //collectLatest是下一条数据来的时候,之前中断前一条数据,处理最新的数据,这样会导致前一条数据逻辑只执行一半,有些场景下,可以需要把前一条数据的处理逻辑完整的执行完,再执行最新的
+            runBlocking {
+                flow<Int> {
+                    for ((count, i) in (1..10).withIndex()) {//flow上游每条数据发送间隔是1秒
+                        emit(count)
+                        delay(1000)
+                    }
+                }.collectLatest {//下游处理每条数据需要耗时2秒
+                    println("start handled $it")
+                    delay(2000L)
+                    println("finish handled $it") //结果:finish handled永远执行不到,因为每次新的数据来的时候,处理数据逻辑还没处理完就直接中断去处理了下一条数据
+                }
+            }
+            //而conflate就是来这样做的,它会降上一条数据的处理逻辑完整执行完再执行最新的
+            runBlocking {
+                flow { //flow上游每条数据发送间隔是1秒
+                    for ((count, i) in (1..10).withIndex()) {
+                        emit(count)
+                        delay(1000)
+                    }
+                }.conflate()
+                    .collect { //下游处理每条数据需要耗时2秒
+                        println("start handled $it")
+                        delay(2000L)
+                        println("finish handled $it") //结果start和finish都可以执行完整,只是会丢弃到中间数据
+                    }
+
+            }
         }
     }
 }
